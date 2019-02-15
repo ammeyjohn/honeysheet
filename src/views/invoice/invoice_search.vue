@@ -20,7 +20,7 @@
                             </ul>
                         </div>
                     </div>
-                    <form class="m-form m-form--fit m-form--label-align-right m-form--group-seperator-dashed">
+                    <form class="m-form m-form--fit m-form--label-align-right">
                         <div class="m-portlet__body">	
                             <div class="form-group m-form__group row"> 
                                 <label class="col-lg-2 col-form-label">项目名称</label>

@@ -11,16 +11,5 @@ window.jQuery = jQuery
 window.jquery = jQuery
 
 import 'bootstrap/dist/js/bootstrap'
-
-// import './assets/metronic/js/framework/base/app'
-// import './assets/metronic/js/framework/base/util'
-// import './assets/metronic/js/framework/components/general/header'
-// import './assets/metronic/js/framework/components/general/menu'
-// import './assets/metronic/js/framework/components/general/offcanvas'
-// import './assets/metronic/js/framework/components/general/scroll-top'
-// import './assets/metronic/js/framework/components/general/toggle'
-// import './assets/metronic/js/framework/components/general/dropdown'
-// import './assets/metronic/js/framework/components/general/portlet'
-// import './assets/metronic/js/demo/base/layout'
-
+import './assets/metronic/vendors/tooltip.js/dist/tooltip'
 import './assets/metronic/js/scripts.bundle.js'

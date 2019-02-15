@@ -29,6 +29,26 @@
                             </ul>
                         </div>
                     </li>
+                    <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
+                        <a href="javascript:;" class="m-menu__link m-menu__toggle">
+                            <i class="m-menu__link-icon flaticon-layers"></i>
+                            <span class="m-menu__link-text">合同管理</span>
+                            <i class="m-menu__ver-arrow la la-angle-right"></i>
+                        </a>
+                        <div class="m-menu__submenu "><span class="m-menu__arrow"></span>
+                            <ul class="m-menu__subnav">              
+                                <li class="m-menu__item " aria-haspopup="true">
+                                    <router-link to="/contract/create" class="m-menu__link"><i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">新建合同</span></router-link>
+                                </li>
+                                <li class="m-menu__item " aria-haspopup="true">
+                                    <router-link to="/contract/create" class="m-menu__link"><i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">合同查询</span></router-link>
+                                </li>
+                                <li class="m-menu__item " aria-haspopup="true">
+                                    <router-link to="/contract/create" class="m-menu__link"><i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">项目管理</span></router-link>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
                 </ul>
             </div>                    
             <!-- END: Aside Menu -->
@@ -38,9 +58,7 @@
 
 <script>
 export default {
-    computed: {
-        
-    }    
+
 }
 </script>
 
