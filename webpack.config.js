@@ -10,6 +10,7 @@ module.exports = (env, argv) => {
 	const devMode = argv.mode !== 'production'
 	return {
 		entry: {
+			vendors: './src/vendors.js',
 			metronic: './src/metronic.js',
 			main: ['@babel/polyfill', './src/index.js']
 		},
@@ -99,7 +100,7 @@ module.exports = (env, argv) => {
 				jquery: 'jquery',
 			})
 		],
-		devtool: 'eval-source-map',
+		devtool: 'cheap-module-eval-source-map',
 		devServer: {
 			contentBase: path.resolve(__dirname, 'dist'),
 			inline: true,
@@ -108,7 +109,8 @@ module.exports = (env, argv) => {
 		},
 		resolve: {
 			extensions: ['.js', '.vue', '.css'],
-			alias: {								
+			alias: {	
+				'vue': 'vue/dist/vue.common.js',							
 				'assets': path.resolve(__dirname, './src/assets'),
 				'metronic': path.resolve(__dirname, './src/assets/metronic'),
 			}
