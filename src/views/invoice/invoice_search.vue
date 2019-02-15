@@ -7,11 +7,9 @@
                         <div class="m-portlet__head-caption">
                             <div class="m-portlet__head-title">
                                 <span class="m-portlet__head-icon">
-                                    <i class="flaticon-placeholder-2"></i>
+                                    <i class="flaticon-search"></i>
                                 </span>
-                                <h3 class="m-portlet__head-text">
-                                    Action Tools
-                                </h3>
+                                <h3 class="m-portlet__head-text"> 查询条件 </h3>
                             </div>
                         </div>
                         <div class="m-portlet__head-tools">
@@ -22,17 +20,48 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="m-portlet__body">
-
-                    </div>
-                    <div class="m-portlet__foot">
-                        <div class="row">
-                            <div class="col-md-12 m--align-right">
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                                <span class="m--margin-left-10">or <a href="#" class="m-link m--font-bold">Cancel</a></span>
-                            </div>           
-                        </div>             
-                    </div>
+                    <form class="m-form m-form--fit m-form--label-align-right m-form--group-seperator-dashed">
+                        <div class="m-portlet__body">	
+                            <div class="form-group m-form__group row"> 
+                                <label class="col-lg-2 col-form-label">项目名称</label>
+                                <div class="col-lg-4">
+                                    <input type="email" class="form-control m-input" placeholder="请输入完整或部分项目名称或者项目编号">
+                                </div>
+                                <label class="col-lg-2 col-form-label">所属部门</label>
+                                <div class="col-lg-4">
+                                    <input type="email" class="form-control m-input" placeholder="请选择部门名称">
+                                </div>
+                            </div>
+                            <div class="form-group m-form__group row">
+                                <label class="col-lg-2 col-form-label">付款日期</label>
+                                <div class="col-lg-4">
+                                    <DatePicker :value="value2" format="yyyy/MM/dd" type="daterange" placement="bottom-end" size="large" placeholder="请选择付款日查询范围" style="width: 100%"></DatePicker>
+                                </div>
+                                <label class="col-lg-2 col-form-label">开票日期</label>
+                                <div class="col-lg-4">
+                                    <DatePicker :value="value2" format="yyyy/MM/dd" type="daterange" placement="bottom-end" size="large" placeholder="请选择付款日查询范围" style="width: 100%"></DatePicker>
+                                </div>
+                            </div>
+                            <div class="form-group m-form__group row">
+                                <label class="col-lg-2 col-form-label">开票内容</label>
+                                <div class="col-lg-4">
+                                    <input type="email" class="form-control m-input" placeholder="请输入开票内容">
+                                </div>
+                                <label class="col-lg-2 col-form-label">发票种类</label>
+                                <div class="col-lg-4">
+                                    <Select v-model="model4" size="large" clearable multiple style="width:100%">
+                                        <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+                                    </Select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="m-portlet__foot m-portlet__foot--fit">
+                            <div class="m-form__actions m-form__actions--solid m-form__actions--right">
+                                <button type="submit" class="btn btn-accent">查询</button>
+                                <button type="reset" class="btn btn-secondary">重置</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>               
             </div>
         </div>
@@ -92,7 +121,33 @@ export default {
                     PrjName: '普陀区长征镇网格 大屏更换',
                     PrjAmount: 140000.00
                 },
-            ]
+            ],
+            cityList: [
+                {
+                    value: 'New York',
+                    label: 'New York'
+                },
+                {
+                    value: 'London',
+                    label: 'London'
+                },
+                {
+                    value: 'Sydney',
+                    label: 'Sydney'
+                },
+                {
+                    value: 'Ottawa',
+                    label: 'Ottawa'
+                },
+                {
+                    value: 'Paris',
+                    label: 'Paris'
+                },
+                {
+                    value: 'Canberra',
+                    label: 'Canberra'
+                }
+            ],
         }
     },
     mounted() {

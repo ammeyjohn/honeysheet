@@ -5,3 +5,8 @@
     background: url(../images/misc/user_profile_bg.jpg); 
     background-size: cover;
 }
+
+.m-form .m-portlet__body .form-group.row:not(:last-child) {
+    border: none;
+    margin-bottom: -35px;
+}
