@@ -499,7 +499,7 @@ var mPortlet = function(elementId, options) {
          */
         eventTrigger: function(name) {
             //mUtil.triggerCustomEvent(name);
-            for (i = 0; i < the.events.length; i++) {
+            for (var i = 0; i < the.events.length; i++) {
                 var event = the.events[i];
                 if (event.name == name) {
                     if (event.one == true) {

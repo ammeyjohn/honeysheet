@@ -7,10 +7,10 @@ export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [{    
-    path: '/',
-    name: 'root',
+    path: '/invoice/search',
+    name: 'InvoiceSearch',
     component: resolve => {
-      require(['./views/demo.vue'], resolve);
+      require(['./views/invoice/invoice_search.vue'], resolve);
     }
   }]
 })
