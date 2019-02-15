@@ -30,10 +30,15 @@ module.exports = (env, argv) => {
 				},
 				{
 					test: /\.vue$/,
-					loader: 'vue-loader',
-					options: {
-						loaders: {}
-					}
+					use: [{
+						loader: 'vue-loader',
+						options: {}
+					}, {
+						loader: 'iview-loader',
+						options: {
+							prefix: true
+						}
+					}]
 				},
 				{
 					test: /\.js$/,
