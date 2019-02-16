@@ -5,7 +5,9 @@ import iView from 'iview/dist/iview'
 
 Vue.use(iView)
 
-new Vue({
-    router,
-    store,
-  }).$mount('#app')
+const vm = new Vue({
+  el: '#app',
+  router: router,
+  store: store,
+  components: { }
+});
