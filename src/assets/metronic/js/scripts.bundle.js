@@ -1,5 +1,6 @@
 import PerfectScrollbar from '../vendors/perfect-scrollbar/dist/perfect-scrollbar'
 import Tooltip from '../vendors/tooltip.js/dist/tooltip'
+import Cookies from '../vendors/js-cookie/src/js.cookie'
 
 /**
  * @class mUtil  Metronic base utilize class that privides helper functions

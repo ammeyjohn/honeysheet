@@ -78,6 +78,8 @@
 export default {
     data () {
         return {
+            model4: null,
+            value2: null,
             columns2: [
                 { title: '项目编号', key: 'PrjCode',  width: 100, fixed: 'left' },
                 { title: '项目名称', key: 'PrjName',  width: 250, fixed: 'left' },

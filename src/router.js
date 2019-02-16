@@ -10,17 +10,24 @@ export default new Router({
     path: '/',
     name: 'root',
     redirect: '/invoice/search'
-  }, {    
-    path: '/invoice/search',
-    name: 'InvoiceSearch',
+  }, {
+    path: '/app',
+    name: 'App',
     component: resolve => {
-      require(['./views/invoice/invoice_search.vue'], resolve);
-    }
-  }, {    
-    path: '/contract/create',
-    name: 'CreateContract',
-    component: resolve => {
-      require(['./views/contract/create_contract.vue'], resolve);
-    }
+      require(['./app/app.vue'], resolve);
+    },
+    children: [{
+      path: '/invoice/search',
+      name: 'InvoiceSearch',
+      component: resolve => {
+        require(['./views/invoice/invoice_search.vue'], resolve);
+      }
+    }, {
+      path: '/contract/create',
+      name: 'CreateContract',
+      component: resolve => {
+        require(['./views/contract/create_contract.vue'], resolve);
+      }
+    }]
   }]
 })

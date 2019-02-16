@@ -57,6 +57,9 @@
 </template>
 
 <script>
+
+import 'metronic/js/framework/components/general/menu'
+
 export default {
 
 }
