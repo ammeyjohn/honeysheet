@@ -9,7 +9,13 @@ export default new Router({
   routes: [{
     path: '/',
     name: 'root',
-    redirect: '/invoice/search'
+    redirect: '/login'
+  }, {
+    path: '/login',
+    name: 'Login',
+    component: resolve => {
+      require(['./views/login/login.vue'], resolve);
+    },
   }, {
     path: '/app',
     name: 'App',
