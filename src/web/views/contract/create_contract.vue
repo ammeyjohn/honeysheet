@@ -6,69 +6,64 @@
                     <div class="m-portlet__head-caption">
                         <div class="m-portlet__head-title">
                             <span class="m-portlet__head-icon m--hide">
-                            <i class="la la-gear"></i>
+                                <i class="la la-gear"></i>
                             </span>
-                            <h3 class="m-portlet__head-text">
-                                Horizontal Form Layout
-                            </h3>
+                            <h3 class="m-portlet__head-text"> 新建合同 </h3>
                         </div>
                     </div>
                 </div>
                 <!--begin::Form-->
-                <form class="m-form">
+                <form class="m-form m-form--label-align-right">
                     <div class="m-portlet__body">	
                         <div class="m-form__section m-form__section--first">
                             <div class="form-group m-form__group row">
-                                <label class="col-lg-3 col-form-label">Full Name:</label>
-                                <div class="col-lg-6">
-                                    <input type="email" class="form-control m-input" placeholder="Enter full name">
+                                <label class="col-lg-3 col-form-label">合同编号</label>
+                                <div class="col-lg-9">
+                                    <input class="form-control m-input" placeholder="请输入合同编号">
                                 </div>
                             </div>
                             <div class="form-group m-form__group row">
-                                <label class="col-lg-3 col-form-label">Email address:</label>
-                                <div class="col-lg-6">
-                                    <input type="email" class="form-control m-input" placeholder="Enter email">
+                                <label class="col-lg-3 col-form-label">合同名称</label>
+                                <div class="col-lg-9">
+                                    <input class="form-control m-input" placeholder="请输入合同名称">
                                 </div>
-                            </div>	
-                            <div class="form-group m-form__group row">
-                                <label class="col-lg-3 col-form-label">Contact</label>
-                                <div class="col-lg-6">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend"><span class="input-group-text"><i class="la la-chain"></i></span></div>
-                                        <input type="text" class="form-control m-input" placeholder="Phone number">
-                                    </div>	
-                                </div>
-                            </div>							
-                            <div class="m-form__group form-group row">
-                                <label class="col-lg-3 col-form-label">Communication:</label>
-                                <div class="col-lg-6">
-                                    <div class="m-checkbox-inline">
-                                        <label class="m-checkbox">
-                                            <input type="checkbox"> Email 
-                                            <span></span>
-                                        </label>
-                                        <label class="m-checkbox">
-                                            <input type="checkbox"> SMS 
-                                            <span></span>
-                                        </label>
-                                        <label class="m-checkbox">
-                                            <input type="checkbox"> Phone 
-                                            <span></span>
-                                        </label>
-                                    </div>
                             </div>
+                            <div class="form-group m-form__group row">
+                                <label class="col-lg-3 col-form-label">合同总额</label>
+                                <div class="col-lg-9">
+                                    <input class="form-control m-input" placeholder="请输入合同总金额">
+                                </div>
+                            </div>
+                            <div class="form-group m-form__group row">
+                                <label class="col-lg-3 col-form-label">签订日期</label>
+                                <div class="col-lg-9">
+                                    <input class="form-control m-input" placeholder="请输入合同签订日期">
+                                </div>
+                            </div>
+                            <div class="form-group m-form__group row">
+                                <label class="col-lg-3 col-form-label">销售经理</label>
+                                <div class="col-lg-9">
+                                    <input class="form-control m-input" placeholder="请输入或者选择销售经理">
+                                </div>
+                            </div>
+                            <div class="form-group m-form__group row">
+                                <label class="col-lg-3 col-form-label">客户名称</label>
+                                <div class="col-lg-9">
+                                    <input class="form-control m-input" placeholder="请输入客户名称">
+                                </div>
+                            </div>
+                            <div class="form-group m-form__group row">
+                                <label class="col-lg-3 col-form-label">所属省份</label>
+                                <div class="col-lg-9">
+                                    <input class="form-control m-input" placeholder="请输入客户名称">
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="m-portlet__foot m-portlet__foot--fit">
-                        <div class="m-form__actions m-form__actions">
-                            <div class="row">
-                                <div class="col-lg-3"></div>
-                                <div class="col-lg-6">
-                                    <button type="reset" class="btn btn-success">Submit</button>
-                                    <button type="reset" class="btn btn-secondary">Cancel</button>
-                                </div>
-                            </div>
+                        <div class="m-form__actions m-form__actions--solid m-form__actions--right">
+                            <button type="submit" class="btn btn-accent">添加合同</button>
+                            <button type="reset" class="btn btn-secondary">重置</button>
                         </div>
                     </div>
                 </form>
