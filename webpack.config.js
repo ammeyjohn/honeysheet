@@ -10,9 +10,9 @@ module.exports = (env, argv) => {
 	const devMode = argv.mode !== 'production'
 	return {
 		entry: {
-			vendors: './src/vendors.js',
-			metronic: './src/metronic.js',
-			main: ['@babel/polyfill', './src/index.js']
+			vendors: './src/web/vendors.js',
+			metronic: './src/web/metronic.js',
+			main: ['@babel/polyfill', './src/web/index.js']
 		},
 		output: {
 			path: path.resolve('./dist'),
@@ -93,7 +93,7 @@ module.exports = (env, argv) => {
 			}),
 			new HtmlWebPackPlugin({
 				filename: "index.html",
-				template: "./src/index.html",
+				template: "./src/web/index.html",
 				minify: {
 					removeComments: !devMode,
 					collapseWhitespace: !devMode
@@ -116,8 +116,9 @@ module.exports = (env, argv) => {
 			extensions: ['.js', '.vue', '.css'],
 			alias: {	
 				'vue': 'vue/dist/vue.common.js',							
-				'assets': path.resolve(__dirname, './src/assets'),
-				'metronic': path.resolve(__dirname, './src/assets/metronic'),
+				'assets': path.resolve(__dirname, './src/web/assets'),
+				'metronic': path.resolve(__dirname, './src/web/assets/metronic'),
+				'views': path.resolve(__dirname, './src/web/views'),
 			}
 		}		
 	}
