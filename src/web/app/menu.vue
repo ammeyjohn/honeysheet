@@ -26,6 +26,9 @@
                                 <li class="m-menu__item " aria-haspopup="true">
                                     <router-link to="/invoice/search" class="m-menu__link"><i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">发票开据记录</span></router-link>
                                 </li>
+                                <li class="m-menu__item " aria-haspopup="true">
+                                    <router-link to="/invoice/create" class="m-menu__link"><i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">发票管理</span></router-link>
+                                </li>
                             </ul>
                         </div>
                     </li>
@@ -42,9 +45,6 @@
                                 </li>
                                 <li class="m-menu__item " aria-haspopup="true">
                                     <router-link to="/contract/create" class="m-menu__link"><i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">合同查询</span></router-link>
-                                </li>
-                                <li class="m-menu__item " aria-haspopup="true">
-                                    <router-link to="/contract/create" class="m-menu__link"><i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">项目管理</span></router-link>
                                 </li>
                             </ul>
                         </div>

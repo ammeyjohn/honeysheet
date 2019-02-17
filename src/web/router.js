@@ -29,6 +29,12 @@ export default new Router({
         require(['./views/invoice/invoice_search.vue'], resolve);
       }
     }, {
+      path: '/invoice/create',
+      name: 'CreateInvoice',
+      component: resolve => {
+        require(['./views/invoice/create_invoice.vue'], resolve);
+      }
+    }, {
       path: '/contract/create',
       name: 'CreateContract',
       component: resolve => {
