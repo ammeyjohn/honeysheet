@@ -67,7 +67,31 @@
         </div>
         <div class="row">
             <div class="col-lg-12">
-                <Table width="100%" height="650" border :columns="columns2" :data="data4"></Table>
+                <Table width="100%" height="650" border :columns="columns2" :data="data4">
+                    <template slot-scope="{ row }" slot="name">
+                        <Poptip trigger="hover" title="Title" content="content" placement="bottom" style="z-index: 10000;">
+                            <strong>{{ row.PrjName }}</strong>
+                            <div slot="content">
+                                <table>                                  
+                                    <tbody>
+                                        <tr>
+                                            <td>合同编号</td>
+                                            <td>18H1018</td>
+                                        </tr>
+                                        <tr>
+                                            <td>合同名称</td>
+                                            <td>普陀区长征镇网格 大屏更换</td>
+                                        </tr>
+                                        <tr>
+                                            <td>签订日期</td>
+                                            <td>2018-12-05</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>                            
+                        </Poptip>
+                    </template>
+                </Table>
             </div>
         </div>        
     </div>
@@ -81,11 +105,10 @@ export default {
             model4: null,
             value2: null,
             columns2: [
-                { title: '项目编号', key: 'PrjCode',  width: 100, fixed: 'left' },
-                { title: '项目名称', key: 'PrjName',  width: 250, fixed: 'left' },
+                { title: '项目名称', key: 'PrjName',  width: 250, fixed: 'left', slot: 'name' },
                 { title: '项目总额', key: 'PrjAmount',  width: 100 },
                 { title: '付款日', key: 'PrjAmount',  width: 100 },
-                { title: '金额', key: 'PrjAmount',  width: 100 },
+                { title: '金额', key: 'PrjAmount',  width: 100, slot: 'name' },
                 { title: '款到日期', key: 'A',  width: 100 },
                 { title: '款到金额', key: 'B',  width: 100 },
                 { title: '款到合计', key: 'C',  width: 100 },
@@ -123,6 +146,11 @@ export default {
                     PrjName: '普陀区长征镇网格 大屏更换',
                     PrjAmount: 140000.00
                 },
+                {
+                    PrjCode: '18H1018-1',
+                    PrjName: '普陀区长征镇网格 大屏更换',
+                    PrjAmount: 140000.00
+                },                
             ],
             cityList: [
                 {

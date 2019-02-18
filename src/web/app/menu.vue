@@ -15,23 +15,36 @@
                             </span>
                         </a>
                     </li>
-                    <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
-                        <a href="javascript:;" class="m-menu__link m-menu__toggle">
-                            <i class="m-menu__link-icon flaticon-layers"></i>
-                            <span class="m-menu__link-text">发票开票</span>
-                            <i class="m-menu__ver-arrow la la-angle-right"></i>
+                    <li class="m-menu__item " aria-haspopup="true">
+                        <a href="../index.html" class="m-menu__link ">
+                            <i class="m-menu__link-icon flaticon-line-graph"></i>
+                            <span class="m-menu__link-title"> 
+                                <span class="m-menu__link-wrap"> 
+                                    <span class="m-menu__link-text">合同管理</span>
+                                </span>
+                            </span>
                         </a>
-                        <div class="m-menu__submenu "><span class="m-menu__arrow"></span>
-                            <ul class="m-menu__subnav">              
-                                <li class="m-menu__item " aria-haspopup="true">
-                                    <router-link to="/invoice/search" class="m-menu__link"><i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">发票开据记录</span></router-link>
-                                </li>
-                                <li class="m-menu__item " aria-haspopup="true">
-                                    <router-link to="/invoice/create" class="m-menu__link"><i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">发票管理</span></router-link>
-                                </li>
-                            </ul>
-                        </div>
                     </li>
+                    <li class="m-menu__item " aria-haspopup="true">
+                        <a href="../index.html" class="m-menu__link ">
+                            <i class="m-menu__link-icon flaticon-line-graph"></i>
+                            <span class="m-menu__link-title"> 
+                                <span class="m-menu__link-wrap"> 
+                                    <span class="m-menu__link-text">合同收款</span>
+                                </span>
+                            </span>
+                        </a>
+                    </li>                      
+                    <li class="m-menu__item " aria-haspopup="true">
+                        <a href="../index.html" class="m-menu__link ">
+                            <i class="m-menu__link-icon flaticon-line-graph"></i>
+                            <span class="m-menu__link-title"> 
+                                <span class="m-menu__link-wrap"> 
+                                    <span class="m-menu__link-text">收款查询</span>
+                                </span>
+                            </span>
+                        </a>
+                    </li>                       
                     <li class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
                         <a href="javascript:;" class="m-menu__link m-menu__toggle">
                             <i class="m-menu__link-icon flaticon-layers"></i>
@@ -41,10 +54,10 @@
                         <div class="m-menu__submenu "><span class="m-menu__arrow"></span>
                             <ul class="m-menu__subnav">              
                                 <li class="m-menu__item " aria-haspopup="true">
-                                    <router-link to="/contract/create" class="m-menu__link"><i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">新建合同</span></router-link>
+                                    <router-link to="/invoice/search" class="m-menu__link"><i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">合同收款</span></router-link>
                                 </li>
                                 <li class="m-menu__item " aria-haspopup="true">
-                                    <router-link to="/contract/create" class="m-menu__link"><i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">合同查询</span></router-link>
+                                    <router-link to="/invoice/create" class="m-menu__link"><i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i><span class="m-menu__link-text">合同管理</span></router-link>
                                 </li>
                             </ul>
                         </div>
