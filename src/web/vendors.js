@@ -2,7 +2,7 @@
 import 'vue';
 import 'vue-router';
 import 'vuex';
-// import 'axios';
+import 'axios';
 // import 'vuelidate';
 
 // iView

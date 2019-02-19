@@ -71,3 +71,9 @@ typings/
 
 # Serverless directories
 .serverless
+
+# Visual Studio
+.vs/
+.user
+bin/
+obj/
