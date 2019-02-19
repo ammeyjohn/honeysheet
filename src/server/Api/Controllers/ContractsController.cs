@@ -35,17 +35,18 @@ namespace Api.Controllers
         /// <summary>
         /// 根据合同条件查询合同列表，并返回合同名称和合同编号
         /// </summary>
-        /// <param name="condition">合同条件对象</param>
+        /// <param name="input">查询条件</param>
         /// <returns>返回合同名称和合同编号</returns>
         // GET: api/Contracts/simple
         [HttpPost("simple")]
-        public async Task<ActionResult<IEnumerable<ContractNameCodeOutput>>> GetContractsNameCode([FromBody]ContractCondition condition)
+        public async Task<ActionResult<IEnumerable<ContractNameCodeOutput>>> GetContractsNameCode([FromBody]StringInput input)
         {
             var query = _context.Contract.AsQueryable();
-            if (!string.IsNullOrEmpty(condition.ContractCode))
-                query = query.Where(o => o.ContractCode.Contains(condition.ContractCode));
-            if (!string.IsNullOrEmpty(condition.ContractName))
-                query = query.Where(o => o.ContractName.Contains(condition.ContractName));
+            if (input != null)
+            {
+                if (!string.IsNullOrEmpty(input.Value))
+                    query = query.Where(o => o.ContractCode.Contains(input.Value) || o.ContractName.Contains(input.Value));
+            }
 
             return await query.Select<Contract, ContractNameCodeOutput>(o =>
                    new ContractNameCodeOutput()

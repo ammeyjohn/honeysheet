@@ -11,4 +11,9 @@
     <WebStackScaffolding_DbContextTypeFullName>EntityFrameworkCore.Models.HoneySheetContext</WebStackScaffolding_DbContextTypeFullName>
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
+    <StartAction>Project</StartAction>
+    <LaunchUrl>swagger/index.html</LaunchUrl>
+    <ApplicationURL>http://localhost:40587</ApplicationURL>
+  </PropertyGroup>
 </Project>

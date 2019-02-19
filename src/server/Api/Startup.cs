@@ -29,9 +29,20 @@ namespace Api
         public void ConfigureServices(IServiceCollection services)
         {            
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-
-            
             services.AddDbContext<HoneySheetContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:HoneySheet"]));
+
+            // CORS
+            services.AddCors(options =>
+            {
+                // CorsPolicy 是自訂的 Policy 名稱
+                options.AddPolicy("CorsPolicy", policy =>
+                {
+                    policy.WithOrigins("*")
+                          .WithHeaders("*")
+                          .WithMethods("*")
+                          .AllowCredentials();
+                });
+            });
 
             // Swagger
             services.AddSwaggerGen(c =>
@@ -57,6 +68,9 @@ namespace Api
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            // Enable CORS
+            app.UseCors("CorsPolicy");
 
             app.UseMvc();
 

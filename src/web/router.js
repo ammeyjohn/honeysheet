@@ -41,5 +41,11 @@ export default new Router({
         require(['./views/contract/create_contract.vue'], resolve);
       }
     }]
+  }, {
+    path: '/demo',
+    name: 'Demo',
+    component: resolve => {
+      require(['./views/demo/demo.vue'], resolve);
+    }
   }]
 })

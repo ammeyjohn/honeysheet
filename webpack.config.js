@@ -119,6 +119,8 @@ module.exports = (env, argv) => {
 				'assets': path.resolve(__dirname, './src/web/assets'),
 				'metronic': path.resolve(__dirname, './src/web/assets/metronic'),
 				'views': path.resolve(__dirname, './src/web/views'),
+				'services': path.resolve(__dirname, './src/web/services'),
+				'components': path.resolve(__dirname, './src/web/components'),
 			}
 		}		
 	}
