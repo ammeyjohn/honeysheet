@@ -10,6 +10,11 @@ export default {
                 return axios.post('/api/contracts/name', {
                     Value: query
                 });
+            },
+
+            // 根据条件获取合同列表
+            GetContractList(condition) {
+                return axios.post('/api/contracts');
             }
 
         }

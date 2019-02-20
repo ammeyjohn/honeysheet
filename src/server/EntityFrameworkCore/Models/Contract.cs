@@ -7,6 +7,11 @@ namespace HoneySheet.EntityFrameworkCore.Models
 {
     public partial class Contract
     {
+        public Contract()
+        {
+            Project = new HashSet<Project>();
+        }
+
         public int ContractId { get; set; }
         [Required]
         [StringLength(20)]
@@ -28,14 +33,15 @@ namespace HoneySheet.EntityFrameworkCore.Models
         public string Province { get; set; }
         public string Details { get; set; }
         [Column(TypeName = "datetime")]
-        public DateTime CreateTime { get; set; }
-        [Required]
+        public DateTime? CreateTime { get; set; }
         [StringLength(20)]
         public string CreateUser { get; set; }
         [Column(TypeName = "datetime")]
-        public DateTime UpdateTime { get; set; }
-        [Required]
+        public DateTime? UpdateTime { get; set; }
         [StringLength(20)]
         public string UpdateUser { get; set; }
+
+        [InverseProperty("Contract")]
+        public virtual ICollection<Project> Project { get; set; }
     }
 }

@@ -28,4 +28,7 @@
     <ProjectReference Include="..\EntityFrameworkCore\EntityFrameworkCore.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="ValuesController.cs" />
+  </ItemGroup>
 </Project>
