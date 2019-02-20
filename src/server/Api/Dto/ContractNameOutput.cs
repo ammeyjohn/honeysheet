@@ -8,7 +8,7 @@ namespace HoneySheet.Api.Dto
     /// <summary>
     /// 定义合同输出对象，仅返回合同名称以及合同编号
     /// </summary>
-    public class ContractNameCodeOutput
+    public class ContractNameOutput
     {
         /// <summary>
         /// 获取或设置合同Id

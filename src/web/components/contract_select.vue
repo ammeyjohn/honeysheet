@@ -35,7 +35,7 @@ export default {
                     timerHandler = null;
                 }
                 timerHandler = setTimeout(() => {
-                    this.$ContractService.GetContractHeaderList(query)
+                    this.$ContractService.GetContractNameList(query)
                         .then(ret => {
                             this.loading = false;
                             if (ret) {

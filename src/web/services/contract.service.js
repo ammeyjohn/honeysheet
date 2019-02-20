@@ -6,8 +6,8 @@ export default {
         let service = {
 
             // 根据条件查询合同名称和编码列表
-            GetContractHeaderList(query) {
-                return axios.post('/api/contracts/simple', {
+            GetContractNameList(query) {
+                return axios.post('/api/contracts/name', {
                     Value: query
                 });
             }

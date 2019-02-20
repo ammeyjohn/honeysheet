@@ -38,8 +38,8 @@ namespace Api.Controllers
         /// <param name="input">查询条件</param>
         /// <returns>返回合同名称和合同编号</returns>
         // GET: api/Contracts/simple
-        [HttpPost("simple")]
-        public async Task<ActionResult<IEnumerable<ContractNameCodeOutput>>> GetContractsNameCode([FromBody]StringInput input)
+        [HttpPost("name")]
+        public async Task<ActionResult<IEnumerable<ContractNameOutput>>> GetContractsNames([FromBody]StringInput input)
         {
             var query = _context.Contract.AsQueryable();
             if (input != null)
@@ -48,8 +48,8 @@ namespace Api.Controllers
                     query = query.Where(o => o.ContractCode.Contains(input.Value) || o.ContractName.Contains(input.Value));
             }
 
-            return await query.Select<Contract, ContractNameCodeOutput>(o =>
-                   new ContractNameCodeOutput()
+            return await query.Select<Contract, ContractNameOutput>(o =>
+                   new ContractNameOutput()
                    {
                        ContractId = o.ContractId,
                        ContractCode = o.ContractCode,
