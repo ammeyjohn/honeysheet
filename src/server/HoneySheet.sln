@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Api\Api.csproj", "{62C773BA-84E1-41B2-B065-9B4C6B2D5CB6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "Api\Api.csproj", "{62C773BA-84E1-41B2-B065-9B4C6B2D5CB6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EfCore", "EfCore\EfCore.csproj", "{079084B3-4278-45A5-B97D-B0D1F7CB1A81}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EfCore", "EfCore\EfCore.csproj", "{079084B3-4278-45A5-B97D-B0D1F7CB1A81}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.csproj", "{DF99155E-095A-44CE-9571-EC97EC15D8C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{079084B3-4278-45A5-B97D-B0D1F7CB1A81}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{079084B3-4278-45A5-B97D-B0D1F7CB1A81}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{079084B3-4278-45A5-B97D-B0D1F7CB1A81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF99155E-095A-44CE-9571-EC97EC15D8C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF99155E-095A-44CE-9571-EC97EC15D8C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF99155E-095A-44CE-9571-EC97EC15D8C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF99155E-095A-44CE-9571-EC97EC15D8C3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

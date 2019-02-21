@@ -4,6 +4,18 @@
         <name>HoneySheet.Api</name>
     </assembly>
     <members>
+        <member name="T:Api.Controllers.AuthorityController">
+            <summary>
+            定义权限管理控制器
+            </summary>
+        </member>
+        <member name="M:Api.Controllers.AuthorityController.Login(HoneySheet.EfCore.Models.LoginInfo)">
+            <summary>
+            用户登录
+            </summary>
+            <param name="info">用户登录请求对象</param>
+            <returns>返回登录证书对象</returns>
+        </member>
         <member name="M:Api.Controllers.ContractsController.QueryContractsNames(HoneySheet.Api.Dto.StringInput)">
             <summary>
             根据合同条件查询合同列表，并返回合同名称和合同编号

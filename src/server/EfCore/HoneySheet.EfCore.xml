@@ -4,5 +4,90 @@
         <name>HoneySheet.EfCore</name>
     </assembly>
     <members>
+        <member name="T:HoneySheet.EfCore.Models.Credential">
+            <summary>
+            定义用户登录证书对象
+            </summary>
+        </member>
+        <member name="P:HoneySheet.EfCore.Models.Credential.Account">
+            <summary>
+            获取或设置登录账号
+            </summary>
+        </member>
+        <member name="P:HoneySheet.EfCore.Models.Credential.Name">
+            <summary>
+            获取或设置用户姓名
+            </summary>
+        </member>
+        <member name="P:HoneySheet.EfCore.Models.Credential.LoginSuccess">
+            <summary>
+            获取或设置用户登录是否成功标志
+            </summary>
+        </member>
+        <member name="P:HoneySheet.EfCore.Models.Credential.LoginTime">
+            <summary>
+            获取或设置用户成功登陆时间
+            </summary>
+        </member>
+        <member name="T:HoneySheet.EfCore.Models.LoginInfo">
+            <summary>
+            定义用户登录信息
+            </summary>
+        </member>
+        <member name="P:HoneySheet.EfCore.Models.LoginInfo.UserName">
+            <summary>
+            获取或设置用户账号
+            </summary>
+        </member>
+        <member name="P:HoneySheet.EfCore.Models.LoginInfo.Password">
+            <summary>
+            获取或设置用户登录密码
+            </summary>
+        </member>
+        <member name="P:HoneySheet.EfCore.Models.LoginInfo.ClientCode">
+            <summary>
+            获取或设置用户登录机器标识
+            </summary>
+        </member>
+        <member name="T:HoneySheet.EfCore.Models.UserInfo">
+            <summary>
+            定义用户信息对象
+            </summary>
+        </member>
+        <member name="P:HoneySheet.EfCore.Models.UserInfo.Name">
+            <summary>
+            获取或设置用户姓名
+            </summary>
+        </member>
+        <member name="P:HoneySheet.EfCore.Models.UserInfo.Account">
+            <summary>
+            获取或设置用户账号名
+            </summary>
+        </member>
+        <member name="P:HoneySheet.EfCore.Models.UserInfo.Title">
+            <summary>
+            获取或设置用户头衔
+            </summary>
+        </member>
+        <member name="P:HoneySheet.EfCore.Models.UserInfo.Department">
+            <summary>
+            获取或设置所属部门
+            </summary>
+        </member>
+        <member name="P:HoneySheet.EfCore.Models.UserInfo.ManagerAccount">
+            <summary>
+            获取或设置用户对应经理账号
+            </summary>
+        </member>
+        <member name="P:HoneySheet.EfCore.Models.UserInfo.Mobile">
+            <summary>
+            获取或设置用户移动电话号码
+            </summary>
+        </member>
+        <member name="P:HoneySheet.EfCore.Models.UserInfo.Email">
+            <summary>
+            获取或设置用户电子邮件地址
+            </summary>
+        </member>
     </members>
 </doc>
