@@ -1,18 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using HoneySheet.EntityFrameworkCore.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Swashbuckle.AspNetCore.Swagger;
-using System.IO;
 
 namespace Api
 {
@@ -27,9 +25,10 @@ namespace Api
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {            
+        {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            services.AddDbContext<HoneySheetContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:HoneySheet"]));
+
+            //services.AddDbContext<HoneySheetContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:HoneySheet"]));
 
             // CORS
             services.AddCors(options =>
@@ -37,9 +36,9 @@ namespace Api
                 // CorsPolicy 是自訂的 Policy 名稱
                 options.AddPolicy("CorsPolicy", policy =>
                 {
-                    policy.WithOrigins("*")
-                          .WithHeaders("*")
-                          .WithMethods("*")
+                    policy.AllowAnyOrigin()
+                          .AllowAnyHeader()
+                          .AllowAnyMethod()
                           .AllowCredentials();
                 });
             });
@@ -56,23 +55,23 @@ namespace Api
                 // 为 Swagger JSON and UI设置xml文档注释路径
                 var basePath = Path.GetDirectoryName(typeof(Startup).Assembly.Location);
                 //获取应用程序所在目录                
-                c.IncludeXmlComments(Path.Combine(basePath, "HoneySheet.EntityFrameworkCore.xml"));
-                c.IncludeXmlComments(Path.Combine(basePath, "HoneySheet.Api.xml"));
+                //c.IncludeXmlComments(Path.Combine(basePath, "HoneySheet.EntityFrameworkCore.xml"));
+                //c.IncludeXmlComments(Path.Combine(basePath, "HoneySheet.Api.xml"));
             });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
-            // Enable CORS
-            app.UseCors("CorsPolicy");
-
             app.UseMvc();
+
+            // Enable CORS
+            app.UseCors("CorsPolicy");            
 
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
@@ -82,6 +81,8 @@ namespace Api
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "HoneySheet Api V1");
             });
+
+            app.UseMvc();
         }
     }
 }

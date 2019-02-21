@@ -5,8 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using HoneySheet.EntityFrameworkCore.Models;
-using Microsoft.Extensions.Logging;
+using EfCore.Models;
 using HoneySheet.Api.Dto;
 
 namespace Api.Controllers
@@ -16,18 +15,15 @@ namespace Api.Controllers
     public class ContractsController : ControllerBase
     {
         private readonly HoneySheetContext _context;
-        private readonly ILogger _logger;
 
-        public ContractsController(HoneySheetContext context, 
-            ILogger<ContractsController> logger)
+        public ContractsController(HoneySheetContext context)
         {
             _context = context;
-            _logger = logger;
         }
 
         // GET: api/Contracts
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Contract>>> GetContracts()
+        public async Task<ActionResult<IEnumerable<Contract>>> GetContract()
         {
             return await _context.Contract.ToListAsync();
         }
@@ -39,13 +35,14 @@ namespace Api.Controllers
         /// <returns>返回合同名称和合同编号</returns>
         // GET: api/Contracts/simple
         [HttpPost("name")]
-        public async Task<ActionResult<IEnumerable<ContractNameOutput>>> GetContractsNames([FromBody]StringInput input)
+        public async Task<ActionResult<IEnumerable<ContractNameOutput>>> QueryContractsNames([FromBody]StringInput input)
         {
             var query = _context.Contract.AsQueryable();
             if (input != null)
             {
                 if (!string.IsNullOrEmpty(input.Value))
-                    query = query.Where(o => o.ContractCode.Contains(input.Value) || o.ContractName.Contains(input.Value));
+                    query = query.Where(o => o.ContractCode.Contains(input.Value) || 
+                                             o.ContractName.Contains(input.Value));
             }
 
             return await query.Select<Contract, ContractNameOutput>(o =>
@@ -87,16 +84,15 @@ namespace Api.Controllers
             {
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException ex)
-            {                
+            catch (DbUpdateConcurrencyException)
+            {
                 if (!ContractExists(id))
                 {
                     return NotFound();
                 }
                 else
                 {
-                    _logger.LogError(ex, "PostContract exception");
-                    return StatusCode(StatusCodes.Status500InternalServerError);
+                    throw;
                 }
             }
 
@@ -108,15 +104,7 @@ namespace Api.Controllers
         public async Task<ActionResult<Contract>> PostContract(Contract contract)
         {
             _context.Contract.Add(contract);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "PostContract exception");
-                return StatusCode(StatusCodes.Status500InternalServerError);
-            }
+            await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetContract", new { id = contract.ContractId }, contract);
         }

@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace HoneySheet.EntityFrameworkCore.Models
+namespace EfCore.Models
 {
     public partial class HoneySheetContext : DbContext
     {

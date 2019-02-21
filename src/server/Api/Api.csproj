@@ -4,11 +4,10 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
     <AssemblyName>HoneySheet.Api</AssemblyName>
-    <RootNamespace>HoneySheet.Api</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>bin\Debug\netcoreapp2.2\F:\Workspace\honeysheet\src\server\Api\HoneySheet.Api.xml</DocumentationFile>
+    <DocumentationFile>F:\Workspace\honeysheet\src\server\Api\HoneySheet.Api.xml</DocumentationFile>
     <NoWarn>1701;1702;1591</NoWarn>
   </PropertyGroup>
 
@@ -17,18 +16,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="HoneySheet.Api.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
-    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.2" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EntityFrameworkCore\EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\EfCore\EfCore.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Compile Remove="ValuesController.cs" />
-  </ItemGroup>
 </Project>

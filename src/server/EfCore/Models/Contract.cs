@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace HoneySheet.EntityFrameworkCore.Models
+namespace EfCore.Models
 {
     public partial class Contract
     {
