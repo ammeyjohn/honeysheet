@@ -79,6 +79,11 @@
             获取或设置用户移动电话号码
             </summary>
         </member>
+        <member name="P:HoneySheet.EfCore.Models.UserInfo.ExtensionNumber">
+            <summary>
+            获取或设置用户分机号
+            </summary>
+        </member>
         <member name="P:HoneySheet.EfCore.Models.UserInfo.Email">
             <summary>
             获取或设置用户电子邮件地址

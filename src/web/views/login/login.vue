@@ -19,7 +19,7 @@
                                     <span>用户登录失败！请输入正确的用户名和密码，然后重试。</span>		
                                 </div>                                
                                 <div class="form-group m-form__group">
-                                    <input v-model="loginInfo.UserName" class="form-control m-input" type="text" placeholder="请输入域用户名" name="account" autocomplete="off">
+                                    <input v-model="loginInfo.UserName" class="form-control m-input" type="text" placeholder="请输入域用户名" name="account" autocomplete="off">                                    
                                 </div>
                                 <div class="form-group m-form__group">
                                     <input v-model="loginInfo.Password" class="form-control m-input m-login__form-input--last" type="password" placeholder="请输入域登录密码" name="password">
@@ -27,7 +27,7 @@
                                 <div class="row m-login__form-sub">
                                     <div class="col m--align-left m-login__form-left">
                                         <label class="m-checkbox  m-checkbox--light">
-                                            <input type="checkbox" name="remember"> 记住密码
+                                            <input type="checkbox" v-model="isMemory" name="remember"> 记住密码
                                             <span></span>
                                         </label>
                                     </div>
@@ -53,27 +53,47 @@ export default {
                 UserName: null,
                 Password: null
             },
+            isMemory: false,
             isSuccess: true
+        }
+    },   
+    mounted() {
+        var memory = this.$AuthorizeService.getMemory();
+        if (memory) {
+            this.loginInfo = memory;
+            this.isMemory = true;
         }
     },
     methods: {
         Login() {
 
-            this.isSuccess = true;
+            this.isSuccess = true;                                
 
             if (this.loginInfo.UserName == null || this.loginInfo.Password == null) {
                 this.isSuccess = false;
-            }            
+                return;
+            }
 
+            if (this.loginInfo.UserName.trim() == '' || this.loginInfo.Password.trim() == '') {
+                this.isSuccess = false;
+                return;
+            }
+
+            let _that = this;
             this.$AuthorizeService.login(this.loginInfo)
-                .then(isSuccess=>{
+                .then(isSuccess => {
                     if (isSuccess) {                        
-                        this.$router.replace({name: 'InvoiceSearch'}); 
+                        _that.$router.replace({name: 'InvoiceSearch'}); 
+
+                        // 记住密码
+                        if (_that.isMemory) {
+                            _that.$AuthorizeService.rememberPassword(_that.loginInfo);
+                        }
                     } else {
                         this.isSuccess = false;
                     }
                 });            
-        }
+        },
     }
 }
 </script>

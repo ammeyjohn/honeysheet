@@ -11,15 +11,16 @@ export default {
     install: function(Vue, options) {
 
         // 判断用户名和密码是否来自Cookie
-        // const fromMemory = (account) => {
-        //     let memory = service.getMemory();
-        //     return memory && account.UserName === memory.UserName && account.Password === memory.Password;
-        // };
+        const fromMemory = (account) => {
+            let memory = service.getMemory();
+            return memory && account.UserName === memory.UserName && account.Password === memory.Password;
+        };
 
         let service = {
 
             // 用户登录
-            login(account) {                
+            login(account) {
+
                 return axios.post('/auth/login', {
                     'UserName': account.UserName,
                     'Password': account.Password
@@ -70,21 +71,21 @@ export default {
             // },
 
             // 记住密码
-            // rememberPassword(account) {
-            //     if(!fromMemory(account)) {
-            //         Cookies.set('memory', {
-            //             UserName: account.UserName,
-            //             Password: hex(account.Password)
-            //         }, {
-            //             expires: 100
-            //         });
-            //     }
-            // },
+            rememberPassword(account) {
+                if(!fromMemory(account)) {
+                    Cookies.set('memory', {
+                        UserName: account.UserName,
+                        Password: account.Password
+                    }, {
+                        expires: 100
+                    });
+                }
+            },
 
             // 获取记住密码
-            // getMemory() {
-            //     return Cookies.getJSON('memory');
-            // }
+            getMemory() {
+                return Cookies.getJSON('memory');
+            }
         };
 
         Vue.$AuthorizeService = service;

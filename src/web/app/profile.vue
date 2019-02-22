@@ -16,30 +16,17 @@
                             <img src="../assets/metronic/images/users/user4.jpg" class="m--img-rounded m--marginless" alt="" />
                         </div>
                         <div class="m-card-user__details">
-                            <span class="m-card-user__name m--font-weight-500">Mark Andre</span>
-                            <a href="" class="m-card-user__email m--font-weight-300 m-link">mark.andre@gmail.com</a>
+                            <span class="m-card-user__name m--font-weight-500">{{user.name}} ({{user.title}})</span>
+                            <span class="m-card-user__email m--font-weight-300">分机号: {{user.extensionNumber}}</span>
+                            <a href="" class="m-card-user__email m--font-weight-300 m-link">{{user.email}}</a>
                         </div>
                     </div>
                 </div>
                 <div class="m-dropdown__body">
                     <div class="m-dropdown__content">
                         <ul class="m-nav m-nav--skin-light">
-                            <li class="m-nav__section m--hide">
-                                <span class="m-nav__section-text">Section</span>
-                            </li>
                             <li class="m-nav__item">
-                                <a href="../header/profile.html" class="m-nav__link">
-                                    <i class="m-nav__link-icon flaticon-profile-1"></i>
-                                    <span class="m-nav__link-title">
-                                        <span class="m-nav__link-wrap">
-                                            <span class="m-nav__link-text">My Profile</span>
-                                            <span class="m-nav__link-badge"><span class="m-badge m-badge--success">2</span></span>
-                                        </span>
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="m-nav__item">
-                                <a href="../snippets/pages/user/login-1.html" class="btn m-btn--pill    btn-secondary m-btn m-btn--custom m-btn--label-brand m-btn--bolder">Logout</a>
+                                <router-link to="/login" class="btn m-btn--pill btn-secondary m-btn m-btn--custom m-btn--label-brand m-btn--bolder">登出</router-link>
                             </li>
                         </ul>
                     </div>
@@ -51,7 +38,17 @@
 
 <script>
 export default {
-
+    data() {
+        return {
+            user: {}
+        }        
+    },
+    mounted() {
+        var cred = this.$AuthorizeService.getCredential();
+        if (cred != null) {
+            this.user = cred.user;
+        }
+    }
 }
 </script>
 

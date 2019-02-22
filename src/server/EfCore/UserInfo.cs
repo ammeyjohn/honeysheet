@@ -40,6 +40,11 @@ namespace HoneySheet.EfCore.Models
         public string Mobile { get; set; }
 
         /// <summary>
+        /// 获取或设置用户分机号
+        /// </summary>
+        public string ExtensionNumber { get; set; }
+
+        /// <summary>
         /// 获取或设置用户电子邮件地址
         /// </summary>
         public string Email { get; set; }

@@ -35,7 +35,7 @@ namespace HoneySheet.Service
         /// 定义需要从域控制器中读取的用户属性列表
         /// </summary>
         private readonly static string[] Attributes = new string[]
-            { "sAMAccountName", "department", "displayName", "mail", "manager", "mobile", "title" };
+            { "sAMAccountName", "department", "displayName", "mail", "manager", "mobile", "title", "physicalDeliveryOfficeName" };
 
         /// <summary>
         /// 验证用户在域中是否合法
@@ -112,6 +112,7 @@ namespace HoneySheet.Service
                         user.Mobile = entity.getAttribute("mobile").StringValue;
                         user.Email = entity.getAttribute("mail").StringValue;
                         user.ManagerAccount = entity.getAttribute("manager").StringValue;
+                        user.ExtensionNumber = entity.getAttribute("physicalDeliveryOfficeName").StringValue;
                         return user;
                     }
                 }
