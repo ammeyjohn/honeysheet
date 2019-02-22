@@ -34,5 +34,12 @@
             <param name="password">域登录密码</param>
             <returns>如果用户验证通过返回true，否则返回false</returns>
         </member>
+        <member name="M:HoneySheet.Service.LdapService.GetUserInfo(System.String)">
+            <summary>
+            从域控制器获取用户信息
+            </summary>
+            <param name="username">用户名</param>
+            <returns>返回用户信息对象，如果用户账号不存在，返回NULL</returns>
+        </member>
     </members>
 </doc>

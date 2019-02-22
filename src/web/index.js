@@ -6,8 +6,10 @@ import iView from 'iview/dist/iview'
 
 Vue.use(iView)
 
+import AuthorizeService from './services/authorize.service';
 import ContractService from './services/contract.service';
 
+Vue.use(AuthorizeService);
 Vue.use(ContractService);
 
 const vm = new Vue({
@@ -18,7 +20,7 @@ const vm = new Vue({
 });
 
 // Set axios global config
-axios.defaults.baseURL = 'http://localhost:40587';
+axios.defaults.baseURL = 'http://localhost:37651/api';
 axios.defaults.headers.common['Content-Type'] = 'application/json;charset=UTF-8';
 
 // axios response interceptor

@@ -9,14 +9,9 @@
             定义用户登录证书对象
             </summary>
         </member>
-        <member name="P:HoneySheet.EfCore.Models.Credential.Account">
+        <member name="P:HoneySheet.EfCore.Models.Credential.User">
             <summary>
-            获取或设置登录账号
-            </summary>
-        </member>
-        <member name="P:HoneySheet.EfCore.Models.Credential.Name">
-            <summary>
-            获取或设置用户姓名
+            获取或设置用户信息
             </summary>
         </member>
         <member name="P:HoneySheet.EfCore.Models.Credential.LoginSuccess">

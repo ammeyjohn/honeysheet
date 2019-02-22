@@ -73,8 +73,6 @@ namespace Api
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseMvc();
-
             // Enable CORS
             app.UseCors("CorsPolicy");            
 

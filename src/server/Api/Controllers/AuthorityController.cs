@@ -29,15 +29,13 @@ namespace Api.Controllers
         /// </summary>
         /// <param name="info">用户登录请求对象</param>
         /// <returns>返回登录证书对象</returns>
-        [HttpPost]
+        [HttpPost("login")]
         public async Task<ActionResult<Credential>> Login([FromBody]LoginInfo info)
         {
-            _service.Login(info);
-
-            var cred = new Credential();
-            cred.Account = "abc";
-            cred.Name = "456";
-            return cred;
+            if (info == null) return NotFound();
+            if (string.IsNullOrEmpty(info.Password) || string.IsNullOrEmpty(info.UserName))
+                return NotFound();
+            return await Task.Factory.StartNew<Credential>(() => _service.Login(info));
         }
     }
 }

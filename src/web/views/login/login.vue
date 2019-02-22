@@ -11,28 +11,29 @@
                         </div>
                         <div class="m-login__signin">
                             <div class="m-login__head">
-                                <h3 class="m-login__title">Sign In To Admin</h3>
+                                <h3 class="m-login__title">用户登录</h3>
                             </div>
                             <form class="m-login__form m-form">
+                                <div v-if="!isSuccess" class="m-alert m-alert--outline alert alert-danger alert-dismissible animated fadeIn" role="alert">			
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>			
+                                    <span>用户登录失败！请输入正确的用户名和密码，然后重试。</span>		
+                                </div>                                
                                 <div class="form-group m-form__group">
-                                    <input class="form-control m-input" type="text" placeholder="Email" name="email" autocomplete="off">
+                                    <input v-model="loginInfo.UserName" class="form-control m-input" type="text" placeholder="请输入域用户名" name="account" autocomplete="off">
                                 </div>
                                 <div class="form-group m-form__group">
-                                    <input class="form-control m-input m-login__form-input--last" type="password" placeholder="Password" name="password">
+                                    <input v-model="loginInfo.Password" class="form-control m-input m-login__form-input--last" type="password" placeholder="请输入域登录密码" name="password">
                                 </div>
                                 <div class="row m-login__form-sub">
                                     <div class="col m--align-left m-login__form-left">
                                         <label class="m-checkbox  m-checkbox--light">
-                                            <input type="checkbox" name="remember"> Remember me
+                                            <input type="checkbox" name="remember"> 记住密码
                                             <span></span>
                                         </label>
                                     </div>
-                                    <div class="col m--align-right m-login__form-right">
-                                        <a href="javascript:;" id="m_login_forget_password" class="m-link">Forget Password ?</a>
-                                    </div>
                                 </div>
                                 <div class="m-login__form-action">
-                                    <button type="button" class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air  m-login__btn m-login__btn--primary" @click="Login()">Sign In</button>
+                                    <button type="button" class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air m-login__btn m-login__btn--primary" style="font-size: 18px;" @click="Login()">登 录</button>
                                 </div>
                             </form>
                         </div>
@@ -46,9 +47,32 @@
 <script>
 
 export default {
+    data() {
+        return {
+            loginInfo: {
+                UserName: null,
+                Password: null
+            },
+            isSuccess: true
+        }
+    },
     methods: {
         Login() {
-            this.$router.replace({name: 'InvoiceSearch'}); 
+
+            this.isSuccess = true;
+
+            if (this.loginInfo.UserName == null || this.loginInfo.Password == null) {
+                this.isSuccess = false;
+            }            
+
+            this.$AuthorizeService.login(this.loginInfo)
+                .then(isSuccess=>{
+                    if (isSuccess) {                        
+                        this.$router.replace({name: 'InvoiceSearch'}); 
+                    } else {
+                        this.isSuccess = false;
+                    }
+                });            
         }
     }
 }

@@ -16,14 +16,9 @@ namespace HoneySheet.EfCore.Models
         }
 
         /// <summary>
-        /// 获取或设置登录账号
+        /// 获取或设置用户信息
         /// </summary>
-        public string Account { get; set; }
-
-        /// <summary>
-        /// 获取或设置用户姓名
-        /// </summary>
-        public string Name { get; set; }
+        public UserInfo User { get; set; }
 
         /// <summary>
         /// 获取或设置用户登录是否成功标志

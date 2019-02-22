@@ -1,4 +1,4 @@
-import Cookies from 'metronic/vendors/js-cookie'
+import Cookies from 'js-cookie'
 import mUtil from 'metronic/js/framework/base/util'
 import mHeader from 'metronic/js/framework/components/general/header'
 import mOffcanvas from 'metronic/js/framework/components/general/offcanvas'

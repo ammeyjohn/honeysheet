@@ -45,6 +45,11 @@ namespace HoneySheet.Service
         /// <returns>如果用户验证通过返回true，否则返回false</returns>
         public bool Validate(string username, string password)
         {
+            if (string.IsNullOrEmpty(username))
+                throw new ArgumentNullException("username");
+            if (string.IsNullOrEmpty(password))
+                throw new ArgumentNullException("password");
+
             try
             {
                 using (var conn = new LdapConnection())
@@ -53,7 +58,7 @@ namespace HoneySheet.Service
                     conn.Bind($"{BindDN},{BaseDC}", BindPassword);
                     var entities =
                         conn.Search(BaseDC, LdapConnection.SCOPE_SUB,
-                            $"(sAMAccountName={username})", Attributes, false);
+                            $"(sAMAccountName={username})", new string[] { "sAMAccountName" }, false);
                     string userDn = null;
                     while (entities.hasMore())
                     {
@@ -77,24 +82,45 @@ namespace HoneySheet.Service
                 return false;
             }
         }
+
+        /// <summary>
+        /// 从域控制器获取用户信息
+        /// </summary>
+        /// <param name="username">用户名</param>
+        /// <returns>返回用户信息对象，如果用户账号不存在，返回NULL</returns>
+        public UserInfo GetUserInfo(string username)
+        {
+            if (string.IsNullOrEmpty(username))
+                throw new ArgumentNullException("username");
+            try
+            {
+                using (var conn = new LdapConnection())
+                {
+                    conn.Connect(Host, Port);
+                    conn.Bind($"{BindDN},{BaseDC}", BindPassword);
+                    var entities =
+                        conn.Search(BaseDC, LdapConnection.SCOPE_SUB,
+                            $"(sAMAccountName={username})", Attributes, false);
+                    while (entities.hasMore())
+                    {
+                        var entity = entities.next();
+                        var user = new UserInfo();
+                        user.Account = entity.getAttribute("sAMAccountName").StringValue;
+                        user.Name = entity.getAttribute("displayName").StringValue;
+                        user.Title = entity.getAttribute("title").StringValue;
+                        user.Department = entity.getAttribute("department").StringValue;
+                        user.Mobile = entity.getAttribute("mobile").StringValue;
+                        user.Email = entity.getAttribute("mail").StringValue;
+                        user.ManagerAccount = entity.getAttribute("manager").StringValue;
+                        return user;
+                    }
+                }
+                return null;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
     }
-
-                            //    try
-                            //{
-
-
-                            //    //var user = new UserInfo();
-                            //    //user.Account = account.StringValue;
-                            //    //user.Name = entity.getAttribute("displayName").StringValue;
-                            //    //user.Title = entity.getAttribute("title").StringValue;
-                            //    //user.Department = entity.getAttribute("department").StringValue;
-                            //    //user.Mobile = entity.getAttribute("mobile").StringValue;
-                            //    //user.Email = entity.getAttribute("mail").StringValue;
-                            //    //user.ManagerAccount = entity.getAttribute("manager").StringValue;
-                            //    //return user;
-                            //}
-                            //catch (LdapException)
-                            //{
-                            //    return null;
-                            //} 
 }
