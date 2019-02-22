@@ -7,12 +7,13 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>F:\Workspace\honeysheet\src\server\Api\HoneySheet.Api.xml</DocumentationFile>
+    <DocumentationFile>HoneySheet.Api.xml</DocumentationFile>
     <NoWarn>1701;1702;1591</NoWarn>
+    <OutputPath></OutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>F:\Workspace\honeysheet\src\server\Api\HoneySheet.Api.xml</DocumentationFile>
+    <DocumentationFile>HoneySheet.Api.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

@@ -8,11 +8,11 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <NoWarn>1701;1702;1591</NoWarn>
-    <DocumentationFile>F:\Workspace\honeysheet\src\server\Service\HoneySheet.Service.xml</DocumentationFile>
+    <DocumentationFile>HoneySheet.Service.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>F:\Workspace\honeysheet\src\server\Service\HoneySheet.Service.xml</DocumentationFile>
+    <DocumentationFile>HoneySheet.Service.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
