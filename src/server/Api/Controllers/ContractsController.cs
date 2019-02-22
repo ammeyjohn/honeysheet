@@ -1,31 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using EfCore.Models;
-using HoneySheet.Api.Dto;
+using System.Web.Http;
+using System.Web.Http.Description;
+using HoneySheet.Model;
+using HoneySheet.Model.Dto;
 
-namespace Api.Controllers
+namespace HoneySheet.Api.Controllers
 {
-    [Route("api/contracts")]
-    [ApiController]
-    public class ContractsController : ControllerBase
+    [RoutePrefix("api/contract")]
+    public class ContractsController : ApiController
     {
-        private readonly HoneySheetContext _context;
-
-        public ContractsController(HoneySheetContext context)
-        {
-            _context = context;
-        }
+        private HoneySheetContext _context = new HoneySheetContext();
 
         // GET: api/Contracts
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Contract>>> GetContract()
+        public IQueryable<Contract> GetContracts()
         {
-            return await _context.Contract.ToListAsync();
+            return _context.Contracts;
+        }
+
+        // GET: api/Contracts/5
+        [ResponseType(typeof(Contract))]
+        public async Task<IHttpActionResult> GetContract(int id)
+        {
+            Contract contract = await _context.Contracts.FindAsync(id);
+            if (contract == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(contract);
         }
 
         /// <summary>
@@ -33,19 +43,19 @@ namespace Api.Controllers
         /// </summary>
         /// <param name="input">查询条件</param>
         /// <returns>返回合同名称和合同编号</returns>
-        // GET: api/Contracts/simple
-        [HttpPost("name")]
-        public async Task<ActionResult<IEnumerable<ContractNameOutput>>> QueryContractsNames([FromBody]StringInput input)
+        [HttpPost]
+        [Route("name")]
+        public async Task<IHttpActionResult> QueryContractsNames([FromBody]StringInput input)
         {
-            var query = _context.Contract.AsQueryable();
+            var query = _context.Contracts.AsQueryable();
             if (input != null)
             {
                 if (!string.IsNullOrEmpty(input.Value))
-                    query = query.Where(o => o.ContractCode.Contains(input.Value) || 
+                    query = query.Where(o => o.ContractCode.Contains(input.Value) ||
                                              o.ContractName.Contains(input.Value));
             }
 
-            return await query.Select<Contract, ContractNameOutput>(o =>
+            var result = await query.Select<Contract, ContractNameOutput>(o =>
                    new ContractNameOutput()
                    {
                        ContractId = o.ContractId,
@@ -53,6 +63,8 @@ namespace Api.Controllers
                        ContractName = o.ContractName
                    })
                    .ToListAsync();
+
+            return Ok(result);
         }
 
         /// <summary>
@@ -60,12 +72,14 @@ namespace Api.Controllers
         /// </summary>
         /// <param name="condition">合同查询条件对象</param>
         /// <returns>返回合同对象列表数量</returns>
-        [HttpPost("query/count")]
-        public async Task<ActionResult<int>> QueryContractCountByCondition([FromBody]ContractCondition condition)
+        [HttpPost]
+        [Route("query/count")]
+        public async Task<IHttpActionResult> QueryContractCountByCondition([FromBody]ContractCondition condition)
         {
-            var query = _context.Contract.AsQueryable();
+            var query = _context.Contracts.AsQueryable();
             query = query.BuildQuery(condition);
-            return await query.CountAsync();
+            var count = await query.CountAsync();
+            return Ok(count);
         }
 
         /// <summary>
@@ -75,38 +89,29 @@ namespace Api.Controllers
         /// <param name="pageIndex">分页页码</param>
         /// <param name="pageSize">每页记录数</param>
         /// <returns>返回合同对象列表</returns>
-        [HttpPost("query/{pageIndex}")]
-        public async Task<ActionResult<IEnumerable<Contract>>> QueryContractsByCondition([FromBody]ContractCondition condition, int pageIndex, int pageSize = 20)
+        [HttpPost]
+        [Route("query/{pageIndex}")]
+        public async Task<IHttpActionResult> QueryContractsByCondition([FromBody]ContractCondition condition, int pageIndex, int pageSize = 20)
         {
-            var query = _context.Contract
-                                .Include(o => o.Department)
+            var query = _context.Contracts
                                 .AsQueryable();
             query = query.BuildQuery(condition)
                          .Skip((pageIndex - 1) * pageSize)
                          .Take(pageSize)
-                         .OrderBy(o => o.ContractId);
-            var list = await query.ToListAsync();
-            return list;
-        }
-
-        // GET: api/Contracts/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Contract>> GetContract(int id)
-        {
-            var contract = await _context.Contract.FindAsync(id);
-
-            if (contract == null)
-            {
-                return NotFound();
-            }
-
-            return contract;
+                         .OrderBy(o => o.ContractId);            
+            var result = await query.ToListAsync();
+            return Ok(result);
         }
 
         // PUT: api/Contracts/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutContract(int id, Contract contract)
+        [ResponseType(typeof(void))]
+        public async Task<IHttpActionResult> PutContract(int id, Contract contract)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             if (id != contract.ContractId)
             {
                 return BadRequest();
@@ -130,38 +135,52 @@ namespace Api.Controllers
                 }
             }
 
-            return NoContent();
+            return StatusCode(HttpStatusCode.NoContent);
         }
 
         // POST: api/Contracts
-        [HttpPost]
-        public async Task<ActionResult<Contract>> PostContract(Contract contract)
+        [ResponseType(typeof(Contract))]
+        public async Task<IHttpActionResult> PostContract(Contract contract)
         {
-            _context.Contract.Add(contract);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            _context.Contracts.Add(contract);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetContract", new { id = contract.ContractId }, contract);
+            return CreatedAtRoute("DefaultApi", new { id = contract.ContractId }, contract);
         }
 
         // DELETE: api/Contracts/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<Contract>> DeleteContract(int id)
+        [ResponseType(typeof(Contract))]
+        public async Task<IHttpActionResult> DeleteContract(int id)
         {
-            var contract = await _context.Contract.FindAsync(id);
+            Contract contract = await _context.Contracts.FindAsync(id);
             if (contract == null)
             {
                 return NotFound();
             }
 
-            _context.Contract.Remove(contract);
+            _context.Contracts.Remove(contract);
             await _context.SaveChangesAsync();
 
-            return contract;
+            return Ok(contract);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _context.Dispose();
+            }
+            base.Dispose(disposing);
         }
 
         private bool ContractExists(int id)
         {
-            return _context.Contract.Any(e => e.ContractId == id);
+            return _context.Contracts.Count(e => e.ContractId == id) > 0;
         }
     }
 

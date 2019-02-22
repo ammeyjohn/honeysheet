@@ -1,41 +1,39 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
-using EfCore;
-using HoneySheet.EfCore.Models;
-using HoneySheet.Service;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+using System.Web.Http;
+using System.Web.Http.Description;
+using HoneySheet.Model;
+using HoneySheet.Model.Dto;
 
-namespace Api.Controllers
+namespace HoneySheet.Api.Controllers
 {
     /// <summary>
     /// 定义权限管理控制器
     /// </summary>
-    [Route("api/auth")]
-    [ApiController]
-    public class AuthorityController : ControllerBase
-    {
-        public AuthorityController(AuthorityService service)
-        {
-            this._service = service;
-        }
-
-        private AuthorityService _service;
-
+    [Route("api/auth")]    
+    public class AuthorityController : ApiController
+    {                
         /// <summary>
         /// 用户登录
         /// </summary>
         /// <param name="info">用户登录请求对象</param>
         /// <returns>返回登录证书对象</returns>
-        [HttpPost("login")]
-        public async Task<ActionResult<Credential>> Login([FromBody]LoginInfo info)
+        [HttpPost()]
+        [Route("login")]
+        public async Task<IHttpActionResult> Login([FromBody]LoginInfo info)
         {
             if (info == null) return NotFound();
             if (string.IsNullOrEmpty(info.Password) || string.IsNullOrEmpty(info.UserName))
                 return NotFound();
-            return await Task.Factory.StartNew<Credential>(() => _service.Login(info));
+            //return await Task.Factory.StartNew<Credential>(() => _service.Login(info));
+            return null;
         }
     }
 }
