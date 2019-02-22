@@ -83,7 +83,7 @@ export default {
             this.$AuthorizeService.login(this.loginInfo)
                 .then(isSuccess => {
                     if (isSuccess) {                        
-                        _that.$router.replace({name: 'InvoiceSearch'}); 
+                        _that.$router.replace({name: 'ContractSearch'}); 
 
                         // 记住密码
                         if (_that.isMemory) {

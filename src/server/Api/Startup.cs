@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using EfCore.Models;
 using HoneySheet.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -29,7 +31,8 @@ namespace Api
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            //services.AddDbContext<HoneySheetContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:HoneySheet"]));
+            // EF Context
+            services.AddDbContext<HoneySheetContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:HoneySheet"]));
 
             // CORS
             services.AddCors(options =>
@@ -74,7 +77,9 @@ namespace Api
             }
 
             // Enable CORS
-            app.UseCors("CorsPolicy");            
+            app.UseCors("CorsPolicy");
+
+            app.UseMvc();
 
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
@@ -83,9 +88,7 @@ namespace Api
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "HoneySheet Api V1");
-            });
-
-            app.UseMvc();
+            });            
         }
     }
 }

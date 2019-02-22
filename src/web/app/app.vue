@@ -99,7 +99,7 @@
 
 <script>
 
-import 'metronic/js/demo/base/layout'
+import '../metronic'
 import LeftSideMenu from './menu.vue'
 import UserProfile from './profile.vue'
 

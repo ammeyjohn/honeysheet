@@ -23,9 +23,38 @@
             <param name="input">查询条件</param>
             <returns>返回合同名称和合同编号</returns>
         </member>
+        <member name="M:Api.Controllers.ContractsController.QueryContractCountByCondition(HoneySheet.Api.Dto.ContractCondition)">
+            <summary>
+            根据条件查询合同列表数量
+            </summary>
+            <param name="condition">合同查询条件对象</param>
+            <returns>返回合同对象列表数量</returns>
+        </member>
+        <member name="M:Api.Controllers.ContractsController.QueryContractsByCondition(HoneySheet.Api.Dto.ContractCondition,System.Int32,System.Int32)">
+            <summary>
+            根据条件查询合同列表
+            </summary>
+            <param name="condition">合同查询条件对象</param>
+            <param name="pageIndex">分页页码</param>
+            <param name="pageSize">每页记录数</param>
+            <returns>返回合同对象列表</returns>
+        </member>
+        <member name="M:Api.Controllers.ContractExtension.BuildQuery(System.Linq.IQueryable{EfCore.Models.Contract},HoneySheet.Api.Dto.ContractCondition)">
+            <summary>
+            构建查询条件
+            </summary>
+            <param name="querier"></param>
+            <param name="condition"></param>
+            <returns></returns>
+        </member>
         <member name="T:HoneySheet.Api.Dto.ContractCondition">
             <summary>
             定义合同查询条件对象
+            </summary>
+        </member>
+        <member name="P:HoneySheet.Api.Dto.ContractCondition.ContractIds">
+            <summary>
+            获取或设置合同编号查询列表
             </summary>
         </member>
         <member name="P:HoneySheet.Api.Dto.ContractCondition.ContractCode">
@@ -36,6 +65,36 @@
         <member name="P:HoneySheet.Api.Dto.ContractCondition.ContractName">
             <summary>
             获取或设置合同名称查询条件
+            </summary>
+        </member>
+        <member name="P:HoneySheet.Api.Dto.ContractCondition.DateOfSign0">
+            <summary>
+            获取或设置合同签订日期查询条件0
+            </summary>
+        </member>
+        <member name="P:HoneySheet.Api.Dto.ContractCondition.DateOfSign1">
+            <summary>
+            获取或设置合同签订日期查询条件1
+            </summary>
+        </member>
+        <member name="P:HoneySheet.Api.Dto.ContractCondition.ContractAmount0">
+            <summary>
+            获取或设置合同金额查询条件0
+            </summary>
+        </member>
+        <member name="P:HoneySheet.Api.Dto.ContractCondition.ContractAmount1">
+            <summary>
+            获取或设置合同金额查询条件1
+            </summary>
+        </member>
+        <member name="P:HoneySheet.Api.Dto.ContractCondition.Salesmans">
+            <summary>
+            获取或设置销售人查询列表
+            </summary>
+        </member>
+        <member name="P:HoneySheet.Api.Dto.ContractCondition.DepartmentIds">
+            <summary>
+            获取或设置合同所述部门列表
             </summary>
         </member>
         <member name="T:HoneySheet.Api.Dto.ContractNameOutput">

@@ -23,24 +23,22 @@ namespace EfCore.Models
         public decimal ContractAmount { get; set; }
         [Column(TypeName = "date")]
         public DateTime DateOfSign { get; set; }
-        [Required]
-        [StringLength(20)]
-        public string Department { get; set; }
+        public int DepartmentId { get; set; }
         [Required]
         [StringLength(20)]
         public string Salesman { get; set; }
-        [StringLength(20)]
-        public string Province { get; set; }
-        public string Details { get; set; }
-        [Column(TypeName = "datetime")]
-        public DateTime? CreateTime { get; set; }
-        [StringLength(20)]
-        public string CreateUser { get; set; }
+        [Required]
+        [StringLength(50)]
+        public string Custom { get; set; }
+        public int State { get; set; }
         [Column(TypeName = "datetime")]
         public DateTime? UpdateTime { get; set; }
         [StringLength(20)]
         public string UpdateUser { get; set; }
 
+        [ForeignKey("DepartmentId")]
+        [InverseProperty("Contract")]
+        public virtual Department Department { get; set; }
         [InverseProperty("Contract")]
         public virtual ICollection<Project> Project { get; set; }
     }

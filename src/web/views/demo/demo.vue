@@ -17,7 +17,7 @@
 
 <script>
 
-import ContractSelect from 'components/contract_select.vue'
+import ContractSelect from 'views/contract/contract_select.vue'
 import InvoiceCondition from 'views/invoice/invoice_condition.vue'
 
 export default {

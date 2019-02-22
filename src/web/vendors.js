@@ -9,7 +9,10 @@ import 'axios';
 import 'iview/dist/iview'
 import 'iview/dist/styles/iview.css'
 
-// 引用moment.js，设置语言为中文
-import moment from 'moment/src/moment.js';
-import 'moment/src/locale/zh-cn.js';
+import numeral from 'numeral'
+import 'numeral/locales/chs'
+numeral.locale('chs');
+
+import moment from 'moment'
+import 'moment/src/locale/zh-cn.js'
 moment.locale('zh-cn');

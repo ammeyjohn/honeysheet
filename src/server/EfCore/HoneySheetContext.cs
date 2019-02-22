@@ -16,9 +16,11 @@ namespace EfCore.Models
         }
 
         public virtual DbSet<Contract> Contract { get; set; }
+        public virtual DbSet<Department> Department { get; set; }
         public virtual DbSet<Invoice> Invoice { get; set; }
         public virtual DbSet<Project> Project { get; set; }
         public virtual DbSet<Receipt> Receipt { get; set; }
+        public virtual DbSet<User> User { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -37,11 +39,12 @@ namespace EfCore.Models
             {
                 entity.Property(e => e.ContractCode).IsUnicode(false);
 
-                entity.Property(e => e.CreateUser).IsUnicode(false);
-
-                entity.Property(e => e.Province).IsUnicode(false);
-
                 entity.Property(e => e.UpdateUser).IsUnicode(false);
+            });
+
+            modelBuilder.Entity<Department>(entity =>
+            {
+                entity.Property(e => e.DepartmentId).ValueGeneratedNever();
             });
 
             modelBuilder.Entity<Invoice>(entity =>
@@ -87,6 +90,11 @@ namespace EfCore.Models
                     .HasForeignKey(d => d.InvoiceId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("Receipt_InvoiceId_fk");
+            });
+
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.Property(e => e.Account).IsUnicode(false);
             });
         }
     }

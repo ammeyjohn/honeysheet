@@ -17,7 +17,7 @@
                 </ul>
             </div>
         </div>
-        <form class="m-form m-form--fit m-form--label-align-right">
+        <form class="m-form m-form--fit m-form--label-align-right" action="">
             <div class="m-portlet__body">	
                 <div class="form-group m-form__group row"> 
                     <label class="col-lg-2 col-form-label">合同名称</label>
@@ -32,9 +32,9 @@
                 <div class="form-group m-form__group row">
                     <label class="col-lg-2 col-form-label">合同金额</label>
                     <div class="col-lg-4">
-                        <InputNumber :min="0" v-model="condition.AmountRange0" style="width: 48%"></InputNumber>
+                        <InputNumber :min="0" v-model="condition.amountRange0" style="width: 48%"></InputNumber>
                         -
-                        <InputNumber :min="0" v-model="condition.AmountRange1" style="width: 48%"></InputNumber>
+                        <InputNumber :min="0" v-model="condition.amountRange1" style="width: 48%"></InputNumber>
                     </div>
                     <label class="col-lg-2 col-form-label">销售经理</label>
                     <div class="col-lg-4">
@@ -52,8 +52,8 @@
             </div>
             <div class="m-portlet__foot m-portlet__foot--fit">
                 <div class="m-form__actions m-form__actions--solid m-form__actions--right">
-                    <button type="submit" class="btn btn-accent" @click="search()">查询</button>
-                    <button type="reset" class="btn btn-secondary">重置</button>
+                    <button class="btn btn-accent" @click="search()">查询</button>
+                    <button class="btn btn-secondary">重置</button>
                 </div>
             </div>
         </form>
@@ -72,11 +72,11 @@ export default {
     data() {
         return {
             condition: {
-                ContractIds: [],
-                DateOfSign0: null,
-                DateOfSign1: null,
-                AmountRange0: null,
-                AmountRange1: null
+                contractIds: [],
+                dateOfSign0: null,
+                dateOfSign1: null,
+                amountRange0: null,
+                amountRange1: null
             },
             dateOfSignRange: null,
             dateOfSignOption: {
@@ -89,11 +89,15 @@ export default {
     },
     methods: {
         search() {
-            console.log(this.dateOfSignRange);
+            if(this.dateOfSignRange != null) {            
+                this.condition.dateOfSign0 = this.dateOfSignRange[0];
+                this.condition.dateOfSign1 = this.dateOfSignRange[1];
+            }
+            this.$emit('change', this.condition);
         },
 
         contractSelectChanged(items) {
-            this.condition.ContractIds = items;
+            this.condition.contractIds = items;
         }
     }
 }

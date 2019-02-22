@@ -12,9 +12,14 @@ export default {
                 });
             },
 
+            // 根据条件获取合同数量
+            QueryContractCount(condition) {
+                return axios.post('/contracts/query/count', condition);
+            },
+
             // 根据条件获取合同列表
-            GetContractList(condition) {
-                return axios.post('/contracts');
+            QueryContractList(condition, pageSize, pageIndex) {
+                return axios.post(`/contracts/query/${pageIndex}?pageSize=${pageSize}`, condition);
             }
 
         }

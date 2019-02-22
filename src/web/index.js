@@ -1,16 +1,27 @@
+import './vendors'
 import Vue from 'vue';
 import axios from 'axios';
+import iView from 'iview/dist/iview'
 import router from './router'
 import store from './store'
-import iView from 'iview/dist/iview'
+import moment from 'moment'
+import numeral from 'numeral'
 
 Vue.use(iView)
 
 import AuthorizeService from './services/authorize.service';
-import ContractService from './services/contract.service';
+import ContractService from './views/contract/contract.service';
 
 Vue.use(AuthorizeService);
 Vue.use(ContractService);
+
+Vue.filter('currency', function(value) {
+    return numeral(value).format('$0,0.00');
+});
+
+Vue.filter('date', function(value) {
+    return moment(value).format('LL');
+})
 
 const vm = new Vue({
   el: '#app',

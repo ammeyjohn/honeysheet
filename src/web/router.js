@@ -23,6 +23,12 @@ export default new Router({
       require(['./app/app.vue'], resolve);
     },
     children: [{
+      path: '/contract/search',
+      name: 'ContractSearch',
+      component: resolve => {
+        require(['./views/contract/contract_search.vue'], resolve);
+      }
+    }, {
       path: '/invoice/search',
       name: 'InvoiceSearch',
       component: resolve => {
