@@ -14,12 +14,12 @@ namespace ConsoleApp1
 
             }
             DirectorySearcher search = new DirectorySearcher(entry);
-            search.Filter = string.Format("(SAMAccountName={0})", "qiweiwei");
+            search.Filter = string.Format("(SAMAccountName={0})", "qiwe88iwei");
             search.SearchScope = SearchScope.Subtree;
             
 
             SearchResult result = search.FindOne();
-            var prop = result.Properties["distinguishedName"];
+            var prop = result.Properties["distinguishssedName"];
             Console.WriteLine(result.Path);
 
             var entry1 = new DirectoryEntry("LDAP://128.1.1.20:389/DC=shanghai3h,DC=com",

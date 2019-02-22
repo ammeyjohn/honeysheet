@@ -17,19 +17,21 @@ namespace HoneySheet.Service
         /// <param name="info">用户登录信息</param>
         /// <returns>返回用户登录证书对象</returns>
         public Credential Login(LoginInfo info)
-        {           
-            //var result = _ldap.Validate(info.UserName, info.Password);
-            //if (result)
-            //{
-            //    var user = _ldap.GetUserInfo(info.UserName);
-            //    if (user != null)
-            //    {
-            //        var cred = new Credential();
-            //        cred.User = user;
-            //        return cred;
-            //    }
-            //}
-            return null;
+        {
+            var ldap = new LdapService();
+            var cred = new Credential();
+            var result = ldap.Validate(info.UserName, info.Password);
+            if (result)
+            {
+                var user = ldap.GetLdapUserInfo(info.UserName);
+                if (user != null)
+                {
+                    cred.User = user;
+                    cred.LoginSuccess = true;
+                    cred.LoginTime = DateTime.Now;
+                }
+            }
+            return cred;
         }
     }
 }

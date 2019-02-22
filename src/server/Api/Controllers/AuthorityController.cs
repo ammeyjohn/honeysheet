@@ -11,6 +11,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using HoneySheet.Model;
 using HoneySheet.Model.Dto;
+using HoneySheet.Service;
 
 namespace HoneySheet.Api.Controllers
 {
@@ -32,8 +33,10 @@ namespace HoneySheet.Api.Controllers
             if (info == null) return NotFound();
             if (string.IsNullOrEmpty(info.Password) || string.IsNullOrEmpty(info.UserName))
                 return NotFound();
-            //return await Task.Factory.StartNew<Credential>(() => _service.Login(info));
-            return null;
+
+            var service = new AuthorityService();
+            var credential = await Task.Factory.StartNew<Credential>(() => service.Login(info));
+            return Ok(credential);
         }
     }
 }

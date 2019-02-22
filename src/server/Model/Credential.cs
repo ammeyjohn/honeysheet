@@ -9,12 +9,6 @@ namespace HoneySheet.Model
     /// </summary>
     public class Credential
     {        
-        public Credential()
-        {
-            this.LoginSuccess = true;
-            this.LoginTime = DateTime.Now;
-        }
-
         /// <summary>
         /// 获取或设置用户信息
         /// </summary>
