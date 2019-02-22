@@ -7,19 +7,19 @@ export default {
 
             // 根据条件查询合同名称和编码列表
             GetContractNameList(query) {
-                return axios.post('/contracts/name', {
+                return axios.post('/contract/name', {
                     Value: query
                 });
             },
 
             // 根据条件获取合同数量
             QueryContractCount(condition) {
-                return axios.post('/contracts/query/count', condition);
+                return axios.post('/contract/query/count', condition);
             },
 
             // 根据条件获取合同列表
             QueryContractList(condition, pageSize, pageIndex) {
-                return axios.post(`/contracts/query/${pageIndex}?pageSize=${pageSize}`, condition);
+                return axios.post(`/contract/query/${pageIndex}?pageSize=${pageSize}`, condition);
             }
 
         }

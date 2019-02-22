@@ -10,10 +10,10 @@
         <EntityTypeShape EntityType="HoneySheet.Model.Invoice" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="HoneySheet.Model.Project" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="HoneySheet.Model.Receipt" Width="1.5" PointX="7.5" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="HoneySheet.Model.User" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
         <AssociationConnector Association="HoneySheet.Model.Project_ContractId_fk" ManuallyRouted="false" />
         <AssociationConnector Association="HoneySheet.Model.Invoice_ProjectId_fk" ManuallyRouted="false" />
         <AssociationConnector Association="HoneySheet.Model.Receipt_InvoiceId_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="HoneySheet.Model.ContractDepartment" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

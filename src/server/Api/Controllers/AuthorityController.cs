@@ -18,7 +18,7 @@ namespace HoneySheet.Api.Controllers
     /// <summary>
     /// 定义权限管理控制器
     /// </summary>
-    [Route("api/auth")]    
+    [RoutePrefix("api/auth")]    
     public class AuthorityController : ApiController
     {                
         /// <summary>

@@ -16,9 +16,9 @@
                             <img src="../assets/metronic/images/users/user4.jpg" class="m--img-rounded m--marginless" alt="" />
                         </div>
                         <div class="m-card-user__details">
-                            <span class="m-card-user__name m--font-weight-500">{{user.name}} ({{user.title}})</span>
-                            <span class="m-card-user__email m--font-weight-300">分机号: {{user.extensionNumber}}</span>
-                            <a href="" class="m-card-user__email m--font-weight-300 m-link">{{user.email}}</a>
+                            <span class="m-card-user__name m--font-weight-500">{{user.Name}} ({{user.Title}})</span>
+                            <span class="m-card-user__email m--font-weight-300">分机号: {{user.ExtensionNumber}}</span>
+                            <a href="" class="m-card-user__email m--font-weight-300 m-link">{{user.Email}}</a>
                         </div>
                     </div>
                 </div>
@@ -37,6 +37,7 @@
 </template>
 
 <script>
+import 'metronic/js/framework/components/general/dropdown'
 export default {
     data() {
         return {
@@ -46,7 +47,7 @@ export default {
     mounted() {
         var cred = this.$AuthorizeService.getCredential();
         if (cred != null) {
-            this.user = cred.user;
+            this.user = cred.User;
         }
     }
 }

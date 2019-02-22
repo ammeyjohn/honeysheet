@@ -12,4 +12,6 @@ window.jquery = jQuery
 
 import 'bootstrap/dist/js/bootstrap'
 import './assets/metronic/vendors/tooltip.js/dist/tooltip'
+
+import 'metronic/js/framework/components/general/menu'
 import './assets/metronic/js/scripts.bundle.js'

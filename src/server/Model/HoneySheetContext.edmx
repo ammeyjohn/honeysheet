@@ -64,14 +64,6 @@
           <Property Name="CreateTime" Type="datetime" Nullable="false" />
           <Property Name="CreateUser" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
-        <EntityType Name="User">
-          <Key>
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Account" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
-        </EntityType>
         <Association Name="Invoice_ProjectId_fk">
           <End Role="Project" Type="Self.Project" Multiplicity="1" />
           <End Role="Invoice" Type="Self.Invoice" Multiplicity="*" />
@@ -114,7 +106,6 @@
           <EntitySet Name="Invoice" EntityType="Self.Invoice" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Project" EntityType="Self.Project" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Receipt" EntityType="Self.Receipt" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="Invoice_ProjectId_fk" Association="Self.Invoice_ProjectId_fk">
             <End Role="Project" EntitySet="Project" />
             <End Role="Invoice" EntitySet="Invoice" />
@@ -149,6 +140,7 @@
           <Property Name="UpdateTime" Type="DateTime" Precision="3" />
           <Property Name="UpdateUser" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Projects" Relationship="Self.Project_ContractId_fk" FromRole="Contract" ToRole="Project" />
+          <NavigationProperty Name="Department" Relationship="HoneySheet.Model.ContractDepartment" FromRole="Contract" ToRole="Department" />
         </EntityType>
         <EntityType Name="Department">
           <Key>
@@ -198,14 +190,6 @@
           <Property Name="CreateUser" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Invoice" Relationship="Self.Receipt_InvoiceId_fk" FromRole="Receipt" ToRole="Invoice" />
         </EntityType>
-        <EntityType Name="User">
-          <Key>
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Account" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-        </EntityType>
         <Association Name="Project_ContractId_fk">
           <End Role="Contract" Type="Self.Contract" Multiplicity="1" />
           <End Role="Project" Type="Self.Project" Multiplicity="*" />
@@ -248,7 +232,6 @@
           <EntitySet Name="Invoices" EntityType="Self.Invoice" />
           <EntitySet Name="Projects" EntityType="Self.Project" />
           <EntitySet Name="Receipts" EntityType="Self.Receipt" />
-          <EntitySet Name="Users" EntityType="Self.User" />
           <AssociationSet Name="Project_ContractId_fk" Association="Self.Project_ContractId_fk">
             <End Role="Contract" EntitySet="Contracts" />
             <End Role="Project" EntitySet="Projects" />
@@ -261,7 +244,23 @@
             <End Role="Invoice" EntitySet="Invoices" />
             <End Role="Receipt" EntitySet="Receipts" />
           </AssociationSet>
+          <AssociationSet Name="ContractDepartment" Association="HoneySheet.Model.ContractDepartment">
+            <End Role="Contract" EntitySet="Contracts" />
+            <End Role="Department" EntitySet="Departments" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="ContractDepartment">
+          <End Type="HoneySheet.Model.Contract" Role="Contract" Multiplicity="*" />
+          <End Type="HoneySheet.Model.Department" Role="Department" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="DepartmentId" />
+            </Principal>
+            <Dependent Role="Contract">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -329,15 +328,6 @@
                 <ScalarProperty Name="ReceiptAmount" ColumnName="ReceiptAmount" />
                 <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
                 <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="HoneySheet.Model.User">
-              <MappingFragment StoreEntitySet="User">
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Account" ColumnName="Account" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

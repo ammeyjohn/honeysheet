@@ -9,16 +9,16 @@
             <div class="col-md-12">
                 <Table width="100%" height="650" border :columns="columns" :data="contracts">
                     <template slot-scope="{ row }" slot="state">
-                        {{ row.state }}
+                        {{ row.State }}
                     </template>
                     <template slot-scope="{ row }" slot="amount">
-                        {{ row.contractAmount | currency }}
+                        {{ row.ContractAmount | currency }}
                     </template>
                     <template slot-scope="{ row }" slot="department">
-                        {{ row.department.departmentName }}
+                        {{ row.Department.DepartmentName }}
                     </template>
                     <template slot-scope="{ row }" slot="dateOfSign">
-                        {{ row.dateOfSign | date }}
+                        {{ row.DateOfSign | date }}
                     </template>
                 </Table>
                 <Page :total="pageCount" :current="pageIndex" :page-size="pageSize" :page-size-opts="[10, 20, 50, 100]" show-sizer 
@@ -42,14 +42,14 @@ export default {
     data() {
         return {
             columns: [
-                { title: '章台', width: 100, fixed: 'left', slot: 'state' },
-                { title: '合同编号', key: 'contractCode',  width: 100, fixed: 'left' },
-                { title: '合同名称', key: 'contractName',  fixed: 'left' },
-                { title: '合同金额', width: 100, slot: 'amount' },
+                { title: '状态', width: 100, fixed: 'left', slot: 'state' },
+                { title: '合同编号', key: 'ContractCode',  width: 100, fixed: 'left' },
+                { title: '合同名称', key: 'ContractName',  fixed: 'left' },
+                { title: '合同金额', width: 120, slot: 'amount' },
                 { title: '签订日期', width: 150, slot: 'dateOfSign' },
-                { title: '客户名称', key: 'custom',  width: 250 },
-                { title: '所属部门', width: 100, slot: 'department' },
-                { title: '销售经理', key: 'salesman',  width: 150 }
+                { title: '客户名称', key: 'Custom',  width: 250 },
+                { title: '所属部门', width: 150, slot: 'department' },
+                { title: '销售经理', key: 'Salesman',  width: 150 }
             ], 
             condition: {                
                 dateOfSign0: moment().startOf('year').format(formatStr),

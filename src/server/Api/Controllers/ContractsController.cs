@@ -94,11 +94,12 @@ namespace HoneySheet.Api.Controllers
         public async Task<IHttpActionResult> QueryContractsByCondition([FromBody]ContractCondition condition, int pageIndex, int pageSize = 20)
         {
             var query = _context.Contracts
+                                .Include(o => o.Department)
                                 .AsQueryable();
             query = query.BuildQuery(condition)
+                         .OrderBy(o => o.ContractId)
                          .Skip((pageIndex - 1) * pageSize)
-                         .Take(pageSize)
-                         .OrderBy(o => o.ContractId);            
+                         .Take(pageSize); 
             var result = await query.ToListAsync();
             return Ok(result);
         }

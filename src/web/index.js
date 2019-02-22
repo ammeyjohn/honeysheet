@@ -31,7 +31,7 @@ const vm = new Vue({
 });
 
 // Set axios global config
-axios.defaults.baseURL = 'http://localhost:37651/api';
+axios.defaults.baseURL = 'http://localhost:3903/api';
 axios.defaults.headers.common['Content-Type'] = 'application/json;charset=UTF-8';
 
 // axios response interceptor

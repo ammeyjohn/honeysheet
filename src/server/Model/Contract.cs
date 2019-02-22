@@ -34,5 +34,6 @@ namespace HoneySheet.Model
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Project> Projects { get; set; }
+        public virtual Department Department { get; set; }
     }
 }
