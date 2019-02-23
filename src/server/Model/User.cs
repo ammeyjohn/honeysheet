@@ -16,5 +16,11 @@ namespace HoneySheet.Model
     {
         public string Account { get; set; }
         public string Name { get; set; }
+        public string Title { get; set; }
+        public string Department { get; set; }
+        public string ManagerAccount { get; set; }
+        public string Mobile { get; set; }
+        public string ExtensionNumber { get; set; }
+        public string Email { get; set; }
     }
 }

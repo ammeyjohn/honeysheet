@@ -12,6 +12,12 @@
                 <invoice-condition></invoice-condition>
             </div>
         </div>
+        <div id="demo3" class="row">
+            <div class="col-md-6">
+                <user-detail></user-detail>
+            </div>
+            <div class="col-md-6"></div>
+        </div>
     </div>
 </template>
 
@@ -19,11 +25,13 @@
 
 import ContractSelect from 'views/contract/contract_select.vue'
 import InvoiceCondition from 'views/invoice/invoice_condition.vue'
+import UserDetail from 'components/user_detail.vue'
 
 export default {
     components: {
         ContractSelect,
-        InvoiceCondition
+        InvoiceCondition,
+        UserDetail
     },
     data() {
         return {

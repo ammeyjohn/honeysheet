@@ -4,76 +4,82 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Alias="Self" Namespace="HoneySheetContext.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012">
+    <Schema Namespace="HoneySheetContext.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Contract">
           <Key>
             <PropertyRef Name="ContractId" />
           </Key>
-          <Property Name="ContractId" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
-          <Property Name="ContractCode" Nullable="false" MaxLength="20" Type="varchar" />
-          <Property Name="ContractName" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="ContractAmount" Nullable="false" Precision="18" Scale="2" Type="decimal" />
-          <Property Name="DateOfSign" Nullable="false" Type="date" />
-          <Property Name="DepartmentId" Nullable="false" Type="int" />
-          <Property Name="SalesAccount" Nullable="false" MaxLength="20" Type="nvarchar" />
-          <Property Name="Custom" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="State" Nullable="false" Type="int" />
+          <Property Name="ContractId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContractCode" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ContractName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ContractAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="DateOfSign" Type="date" Nullable="false" />
+          <Property Name="DepartmentId" Type="int" Nullable="false" />
+          <Property Name="SalesAccount" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Custom" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="State" Type="int" Nullable="false" />
           <Property Name="UpdateTime" Type="datetime" />
-          <Property Name="UpdateUser" MaxLength="20" Type="varchar" />
+          <Property Name="UpdateUser" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="Department">
           <Key>
             <PropertyRef Name="DepartmentId" />
           </Key>
-          <Property Name="DepartmentId" Nullable="false" Type="int" />
-          <Property Name="DepartmentName" Nullable="false" MaxLength="20" Type="nvarchar" />
+          <Property Name="DepartmentId" Type="int" Nullable="false" />
+          <Property Name="DepartmentName" Type="nvarchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="Invoice">
           <Key>
             <PropertyRef Name="InvoiceId" />
           </Key>
-          <Property Name="InvoiceId" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
-          <Property Name="ProjectId" Nullable="false" Type="int" />
-          <Property Name="DrawDate" Nullable="false" Type="date" />
-          <Property Name="InvoiceType" Nullable="false" Type="int" />
-          <Property Name="InvoiceContent" Nullable="false" MaxLength="100" Type="nvarchar" />
-          <Property Name="CreateTime" Nullable="false" Type="datetime" />
-          <Property Name="CreateUser" Nullable="false" MaxLength="20" Type="varchar" />
+          <Property Name="InvoiceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectId" Type="int" Nullable="false" />
+          <Property Name="DrawDate" Type="date" Nullable="false" />
+          <Property Name="InvoiceType" Type="int" Nullable="false" />
+          <Property Name="InvoiceContent" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="CreateUser" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="Project">
           <Key>
             <PropertyRef Name="ProjectId" />
           </Key>
-          <Property Name="ProjectId" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
-          <Property Name="ContractId" Nullable="false" Type="int" />
-          <Property Name="ProjectName" Nullable="false" MaxLength="50" Type="nvarchar" />
-          <Property Name="ProjectAmount" Nullable="false" Precision="18" Scale="2" Type="decimal" />
-          <Property Name="CreateTime" Nullable="false" Type="datetime" />
-          <Property Name="CreateUser" Nullable="false" MaxLength="20" Type="varchar" />
+          <Property Name="ProjectId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContractId" Type="int" Nullable="false" />
+          <Property Name="ProjectName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProjectAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="CreateUser" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="Receipt">
           <Key>
             <PropertyRef Name="ReceiptId" />
           </Key>
-          <Property Name="ReceiptId" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
-          <Property Name="InvoiceId" Nullable="false" Type="int" />
+          <Property Name="ReceiptId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InvoiceId" Type="int" Nullable="false" />
           <Property Name="PayDate" Type="date" />
-          <Property Name="PayAmount" Precision="18" Scale="2" Type="decimal" />
-          <Property Name="ReceiptDate" Nullable="false" Type="date" />
-          <Property Name="ReceiptAmount" Nullable="false" Precision="18" Scale="2" Type="decimal" />
-          <Property Name="CreateTime" Nullable="false" Type="datetime" />
-          <Property Name="CreateUser" Nullable="false" MaxLength="20" Type="varchar" />
+          <Property Name="PayAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ReceiptDate" Type="date" Nullable="false" />
+          <Property Name="ReceiptAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="CreateUser" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="Account" />
           </Key>
-          <Property Name="Account" Nullable="false" MaxLength="20" Type="varchar" />
-          <Property Name="Name" Nullable="false" MaxLength="20" Type="nvarchar" />
+          <Property Name="Account" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Department" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="ManagerAccount" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Mobile" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ExtensionNumber" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <Association Name="Invoice_ProjectId_fk">
-          <End Type="Self.Project" Multiplicity="1" Role="Project" />
-          <End Type="Self.Invoice" Multiplicity="*" Role="Invoice" />
+          <End Role="Project" Type="Self.Project" Multiplicity="1" />
+          <End Role="Invoice" Type="Self.Invoice" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Project">
               <PropertyRef Name="ProjectId" />
@@ -84,8 +90,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Project_ContractId_fk">
-          <End Type="Self.Contract" Multiplicity="1" Role="Contract" />
-          <End Type="Self.Project" Multiplicity="*" Role="Project" />
+          <End Role="Contract" Type="Self.Contract" Multiplicity="1" />
+          <End Role="Project" Type="Self.Project" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Contract">
               <PropertyRef Name="ContractId" />
@@ -96,8 +102,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Receipt_InvoiceId_fk">
-          <End Type="Self.Invoice" Multiplicity="1" Role="Invoice" />
-          <End Type="Self.Receipt" Multiplicity="*" Role="Receipt" />
+          <End Role="Invoice" Type="Self.Invoice" Multiplicity="1" />
+          <End Role="Receipt" Type="Self.Receipt" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Invoice">
               <PropertyRef Name="InvoiceId" />
@@ -115,16 +121,16 @@
           <EntitySet Name="Receipt" EntityType="Self.Receipt" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="Invoice_ProjectId_fk" Association="Self.Invoice_ProjectId_fk">
-            <End EntitySet="Project" Role="Project" />
-            <End EntitySet="Invoice" Role="Invoice" />
+            <End Role="Project" EntitySet="Project" />
+            <End Role="Invoice" EntitySet="Invoice" />
           </AssociationSet>
           <AssociationSet Name="Project_ContractId_fk" Association="Self.Project_ContractId_fk">
-            <End EntitySet="Contract" Role="Contract" />
-            <End EntitySet="Project" Role="Project" />
+            <End Role="Contract" EntitySet="Contract" />
+            <End Role="Project" EntitySet="Project" />
           </AssociationSet>
           <AssociationSet Name="Receipt_InvoiceId_fk" Association="Self.Receipt_InvoiceId_fk">
-            <End EntitySet="Invoice" Role="Invoice" />
-            <End EntitySet="Receipt" Role="Receipt" />
+            <End Role="Invoice" EntitySet="Invoice" />
+            <End Role="Receipt" EntitySet="Receipt" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -280,6 +286,12 @@
           </Key>
           <Property Name="Account" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Department" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ManagerAccount" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ExtensionNumber" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="ContractUser">
           <End Type="HoneySheet.Model.Contract" Role="Contract" Multiplicity="*" />
@@ -366,6 +378,12 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="HoneySheet.Model.User">
               <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ExtensionNumber" ColumnName="ExtensionNumber" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="ManagerAccount" ColumnName="ManagerAccount" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Account" ColumnName="Account" />
               </MappingFragment>

@@ -110,7 +110,7 @@ module.exports = (env, argv) => {
 			contentBase: path.resolve(__dirname, 'dist'),
 			inline: true,
 			historyApiFallback: true,
-			port: 3005
+			port: 3000
 		},
 		resolve: {
 			extensions: ['.js', '.vue', '.css'],
