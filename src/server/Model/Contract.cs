@@ -26,14 +26,15 @@ namespace HoneySheet.Model
         public decimal ContractAmount { get; set; }
         public System.DateTime DateOfSign { get; set; }
         public int DepartmentId { get; set; }
-        public string Salesman { get; set; }
-        public string Custom { get; set; }
+        public string SalesAccount { get; set; }
         public int State { get; set; }
+        public string Custom { get; set; }
         public Nullable<System.DateTime> UpdateTime { get; set; }
         public string UpdateUser { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Project> Projects { get; set; }
         public virtual Department Department { get; set; }
+        public virtual User Salesman { get; set; }
     }
 }

@@ -30,5 +30,6 @@ namespace HoneySheet.Model
         public virtual DbSet<Invoice> Invoices { get; set; }
         public virtual DbSet<Project> Projects { get; set; }
         public virtual DbSet<Receipt> Receipts { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     }
 }

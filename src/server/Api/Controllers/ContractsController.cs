@@ -211,8 +211,8 @@ namespace HoneySheet.Api.Controllers
                     query = query.Where(o => o.ContractAmount >= condition.ContractAmount0);
                 if (condition.ContractAmount1.HasValue)
                     query = query.Where(o => o.ContractAmount < condition.ContractAmount1);
-                if (condition.Salesmans != null && condition.Salesmans.Length > 0)
-                    query = query.Where(o => condition.Salesmans.Contains(o.Salesman));
+                if (condition.SalesAccounts != null && condition.SalesAccounts.Length > 0)
+                    query = query.Where(o => condition.SalesAccounts.Contains(o.SalesAccount));
                 if (condition.DepartmentIds != null && condition.DepartmentIds.Length > 0)
                     query = query.Where(o => condition.DepartmentIds.Contains(o.DepartmentId));
             }

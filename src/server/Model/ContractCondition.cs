@@ -48,7 +48,7 @@ namespace HoneySheet.Model
         /// <summary>
         /// 获取或设置销售人查询列表
         /// </summary>
-        public string[] Salesmans { get; set; }
+        public string[] SalesAccounts { get; set; }
 
         /// <summary>
         /// 获取或设置合同所述部门列表

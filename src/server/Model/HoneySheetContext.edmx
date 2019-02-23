@@ -4,69 +4,76 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="HoneySheetContext.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Alias="Self" Namespace="HoneySheetContext.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012">
         <EntityType Name="Contract">
           <Key>
             <PropertyRef Name="ContractId" />
           </Key>
-          <Property Name="ContractId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ContractCode" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="ContractName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="ContractAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="DateOfSign" Type="date" Nullable="false" />
-          <Property Name="DepartmentId" Type="int" Nullable="false" />
-          <Property Name="Salesman" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="Custom" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="State" Type="int" Nullable="false" />
+          <Property Name="ContractId" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="ContractCode" Nullable="false" MaxLength="20" Type="varchar" />
+          <Property Name="ContractName" Nullable="false" MaxLength="50" Type="nvarchar" />
+          <Property Name="ContractAmount" Nullable="false" Precision="18" Scale="2" Type="decimal" />
+          <Property Name="DateOfSign" Nullable="false" Type="date" />
+          <Property Name="DepartmentId" Nullable="false" Type="int" />
+          <Property Name="SalesAccount" Nullable="false" MaxLength="20" Type="nvarchar" />
+          <Property Name="Custom" Nullable="false" MaxLength="50" Type="nvarchar" />
+          <Property Name="State" Nullable="false" Type="int" />
           <Property Name="UpdateTime" Type="datetime" />
-          <Property Name="UpdateUser" Type="varchar" MaxLength="20" />
+          <Property Name="UpdateUser" MaxLength="20" Type="varchar" />
         </EntityType>
         <EntityType Name="Department">
           <Key>
             <PropertyRef Name="DepartmentId" />
           </Key>
-          <Property Name="DepartmentId" Type="int" Nullable="false" />
-          <Property Name="DepartmentName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="DepartmentId" Nullable="false" Type="int" />
+          <Property Name="DepartmentName" Nullable="false" MaxLength="20" Type="nvarchar" />
         </EntityType>
         <EntityType Name="Invoice">
           <Key>
             <PropertyRef Name="InvoiceId" />
           </Key>
-          <Property Name="InvoiceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ProjectId" Type="int" Nullable="false" />
-          <Property Name="DrawDate" Type="date" Nullable="false" />
-          <Property Name="InvoiceType" Type="int" Nullable="false" />
-          <Property Name="InvoiceContent" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="CreateTime" Type="datetime" Nullable="false" />
-          <Property Name="CreateUser" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="InvoiceId" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="ProjectId" Nullable="false" Type="int" />
+          <Property Name="DrawDate" Nullable="false" Type="date" />
+          <Property Name="InvoiceType" Nullable="false" Type="int" />
+          <Property Name="InvoiceContent" Nullable="false" MaxLength="100" Type="nvarchar" />
+          <Property Name="CreateTime" Nullable="false" Type="datetime" />
+          <Property Name="CreateUser" Nullable="false" MaxLength="20" Type="varchar" />
         </EntityType>
         <EntityType Name="Project">
           <Key>
             <PropertyRef Name="ProjectId" />
           </Key>
-          <Property Name="ProjectId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ContractId" Type="int" Nullable="false" />
-          <Property Name="ProjectName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="ProjectAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="CreateTime" Type="datetime" Nullable="false" />
-          <Property Name="CreateUser" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ProjectId" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="ContractId" Nullable="false" Type="int" />
+          <Property Name="ProjectName" Nullable="false" MaxLength="50" Type="nvarchar" />
+          <Property Name="ProjectAmount" Nullable="false" Precision="18" Scale="2" Type="decimal" />
+          <Property Name="CreateTime" Nullable="false" Type="datetime" />
+          <Property Name="CreateUser" Nullable="false" MaxLength="20" Type="varchar" />
         </EntityType>
         <EntityType Name="Receipt">
           <Key>
             <PropertyRef Name="ReceiptId" />
           </Key>
-          <Property Name="ReceiptId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="InvoiceId" Type="int" Nullable="false" />
+          <Property Name="ReceiptId" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="InvoiceId" Nullable="false" Type="int" />
           <Property Name="PayDate" Type="date" />
-          <Property Name="PayAmount" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="ReceiptDate" Type="date" Nullable="false" />
-          <Property Name="ReceiptAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="CreateTime" Type="datetime" Nullable="false" />
-          <Property Name="CreateUser" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PayAmount" Precision="18" Scale="2" Type="decimal" />
+          <Property Name="ReceiptDate" Nullable="false" Type="date" />
+          <Property Name="ReceiptAmount" Nullable="false" Precision="18" Scale="2" Type="decimal" />
+          <Property Name="CreateTime" Nullable="false" Type="datetime" />
+          <Property Name="CreateUser" Nullable="false" MaxLength="20" Type="varchar" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Account" />
+          </Key>
+          <Property Name="Account" Nullable="false" MaxLength="20" Type="varchar" />
+          <Property Name="Name" Nullable="false" MaxLength="20" Type="nvarchar" />
         </EntityType>
         <Association Name="Invoice_ProjectId_fk">
-          <End Role="Project" Type="Self.Project" Multiplicity="1" />
-          <End Role="Invoice" Type="Self.Invoice" Multiplicity="*" />
+          <End Type="Self.Project" Multiplicity="1" Role="Project" />
+          <End Type="Self.Invoice" Multiplicity="*" Role="Invoice" />
           <ReferentialConstraint>
             <Principal Role="Project">
               <PropertyRef Name="ProjectId" />
@@ -77,8 +84,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Project_ContractId_fk">
-          <End Role="Contract" Type="Self.Contract" Multiplicity="1" />
-          <End Role="Project" Type="Self.Project" Multiplicity="*" />
+          <End Type="Self.Contract" Multiplicity="1" Role="Contract" />
+          <End Type="Self.Project" Multiplicity="*" Role="Project" />
           <ReferentialConstraint>
             <Principal Role="Contract">
               <PropertyRef Name="ContractId" />
@@ -89,8 +96,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Receipt_InvoiceId_fk">
-          <End Role="Invoice" Type="Self.Invoice" Multiplicity="1" />
-          <End Role="Receipt" Type="Self.Receipt" Multiplicity="*" />
+          <End Type="Self.Invoice" Multiplicity="1" Role="Invoice" />
+          <End Type="Self.Receipt" Multiplicity="*" Role="Receipt" />
           <ReferentialConstraint>
             <Principal Role="Invoice">
               <PropertyRef Name="InvoiceId" />
@@ -106,21 +113,21 @@
           <EntitySet Name="Invoice" EntityType="Self.Invoice" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Project" EntityType="Self.Project" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Receipt" EntityType="Self.Receipt" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="Invoice_ProjectId_fk" Association="Self.Invoice_ProjectId_fk">
-            <End Role="Project" EntitySet="Project" />
-            <End Role="Invoice" EntitySet="Invoice" />
+            <End EntitySet="Project" Role="Project" />
+            <End EntitySet="Invoice" Role="Invoice" />
           </AssociationSet>
           <AssociationSet Name="Project_ContractId_fk" Association="Self.Project_ContractId_fk">
-            <End Role="Contract" EntitySet="Contract" />
-            <End Role="Project" EntitySet="Project" />
+            <End EntitySet="Contract" Role="Contract" />
+            <End EntitySet="Project" Role="Project" />
           </AssociationSet>
           <AssociationSet Name="Receipt_InvoiceId_fk" Association="Self.Receipt_InvoiceId_fk">
-            <End Role="Invoice" EntitySet="Invoice" />
-            <End Role="Receipt" EntitySet="Receipt" />
+            <End EntitySet="Invoice" Role="Invoice" />
+            <End EntitySet="Receipt" Role="Receipt" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="HoneySheet.Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -134,13 +141,14 @@
           <Property Name="ContractAmount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="DateOfSign" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="DepartmentId" Type="Int32" Nullable="false" />
-          <Property Name="Salesman" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Custom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SalesAccount" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="State" Type="Int32" Nullable="false" />
+          <Property Name="Custom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="UpdateTime" Type="DateTime" Precision="3" />
           <Property Name="UpdateUser" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Projects" Relationship="Self.Project_ContractId_fk" FromRole="Contract" ToRole="Project" />
           <NavigationProperty Name="Department" Relationship="HoneySheet.Model.ContractDepartment" FromRole="Contract" ToRole="Department" />
+          <NavigationProperty Name="Salesman" Relationship="HoneySheet.Model.ContractUser" FromRole="Contract" ToRole="User" />
         </EntityType>
         <EntityType Name="Department">
           <Key>
@@ -248,6 +256,11 @@
             <End Role="Contract" EntitySet="Contracts" />
             <End Role="Department" EntitySet="Departments" />
           </AssociationSet>
+          <EntitySet Name="Users" EntityType="HoneySheet.Model.User" />
+          <AssociationSet Name="ContractUser" Association="HoneySheet.Model.ContractUser">
+            <End Role="Contract" EntitySet="Contracts" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
         </EntityContainer>
         <Association Name="ContractDepartment">
           <End Type="HoneySheet.Model.Contract" Role="Contract" Multiplicity="*" />
@@ -261,6 +274,25 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Account" />
+          </Key>
+          <Property Name="Account" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="ContractUser">
+          <End Type="HoneySheet.Model.Contract" Role="Contract" Multiplicity="*" />
+          <End Type="HoneySheet.Model.User" Role="User" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Account" />
+            </Principal>
+            <Dependent Role="Contract">
+              <PropertyRef Name="SalesAccount" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -270,13 +302,13 @@
           <EntitySetMapping Name="Contracts">
             <EntityTypeMapping TypeName="HoneySheet.Model.Contract">
               <MappingFragment StoreEntitySet="Contract">
+                <ScalarProperty Name="SalesAccount" ColumnName="SalesAccount" />
                 <ScalarProperty Name="ContractId" ColumnName="ContractId" />
                 <ScalarProperty Name="ContractCode" ColumnName="ContractCode" />
                 <ScalarProperty Name="ContractName" ColumnName="ContractName" />
                 <ScalarProperty Name="ContractAmount" ColumnName="ContractAmount" />
                 <ScalarProperty Name="DateOfSign" ColumnName="DateOfSign" />
                 <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
-                <ScalarProperty Name="Salesman" ColumnName="Salesman" />
                 <ScalarProperty Name="Custom" ColumnName="Custom" />
                 <ScalarProperty Name="State" ColumnName="State" />
                 <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
@@ -328,6 +360,14 @@
                 <ScalarProperty Name="ReceiptAmount" ColumnName="ReceiptAmount" />
                 <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
                 <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="HoneySheet.Model.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Account" ColumnName="Account" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

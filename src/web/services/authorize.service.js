@@ -18,8 +18,29 @@ export default {
 
         let service = {
 
-            // 用户登录
             login(account) {
+                return new Promise((resolve, reject) => {
+                    var credential = {
+                        "User": {
+                            "Name": "袁杰",
+                            "Account": "yuanjie",
+                            "Title": "部门副经理",
+                            "Department": "软件研发部",
+                            "ManagerAccount": "CN=胡嘉宁,OU=公司员工,DC=shanghai3h,DC=com",
+                            "Mobile": "13764417118",
+                            "ExtensionNumber": "243",
+                            "Email": "yuanjie@shanghai3h.com"
+                        },
+                        "LoginSuccess": true,
+                        "LoginTime": "2019-02-23T14:23:18.3969945+08:00"
+                    }
+                    resolve(credential);
+                    Cookies.set('credential', credential, { expires: in30Minutes });                        
+                });
+            },
+
+            // 用户登录
+            login1(account) {
 
                 return axios.post('/auth/login', {
                     'UserName': account.UserName,

@@ -92,6 +92,9 @@
       <DependentUpon>HoneySheetContext.tt</DependentUpon>
     </Compile>
     <Compile Include="StringInput.cs" />
+    <Compile Include="User.cs">
+      <DependentUpon>HoneySheetContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="UserInfo.cs" />
   </ItemGroup>
   <ItemGroup>

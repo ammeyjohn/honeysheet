@@ -17,6 +17,9 @@
                     <template slot-scope="{ row }" slot="department">
                         {{ row.Department.DepartmentName }}
                     </template>
+                    <template slot-scope="{ row }" slot="salesman">
+                        {{ row.Salesman ? row.Salesman.Name : "" }}
+                    </template>
                     <template slot-scope="{ row }" slot="dateOfSign">
                         {{ row.DateOfSign | date }}
                     </template>
@@ -49,7 +52,7 @@ export default {
                 { title: '签订日期', width: 150, slot: 'dateOfSign' },
                 { title: '客户名称', key: 'Custom',  width: 250 },
                 { title: '所属部门', width: 150, slot: 'department' },
-                { title: '销售经理', key: 'Salesman',  width: 150 }
+                { title: '销售经理', width: 150, slot: 'salesman' }
             ], 
             condition: {                
                 dateOfSign0: moment().startOf('year').format(formatStr),
