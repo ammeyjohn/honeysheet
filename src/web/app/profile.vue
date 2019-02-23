@@ -16,9 +16,10 @@
                             <img src="../assets/metronic/images/users/user4.jpg" class="m--img-rounded m--marginless" alt="" />
                         </div>
                         <div class="m-card-user__details">
-                            <span class="m-card-user__name m--font-weight-500">{{user.Name}} ({{user.Title}})</span>
+                            <span class="m-card-user__name m--font-weight-500">{{user.Name}}</span>
+                            <span class="m-card-user__email m--font-weight-300">{{user.Title}}, {{user.Department}}</span>
                             <span class="m-card-user__email m--font-weight-300">分机号: {{user.ExtensionNumber}}</span>
-                            <a href="" class="m-card-user__email m--font-weight-300 m-link">{{user.Email}}</a>
+                            <a :href="user.Email" class="m-card-user__email m--font-weight-300 m-link">{{user.Email}}</a>
                         </div>
                     </div>
                 </div>
