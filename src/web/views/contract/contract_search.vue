@@ -18,7 +18,8 @@
                         {{ row.Department.DepartmentName }}
                     </template>
                     <template slot-scope="{ row }" slot="salesman">
-                        {{ row.Salesman ? row.Salesman.Name : "" }}
+                        <user-profile :user="row"></user-profile>
+                        <!-- {{ row.Salesman ? row.Salesman.Name : "" }} -->
                     </template>
                     <template slot-scope="{ row }" slot="dateOfSign">
                         {{ row.DateOfSign | date }}
@@ -35,12 +36,14 @@
 
 import moment from 'moment'
 import ContractCondition from './contract_condition.vue'
+import UserProfile from 'components/user_profile.vue'
 
 const formatStr = 'YYYY-MM-DD';
 
 export default {
     components: {
-        ContractCondition
+        ContractCondition,
+        UserProfile
     },
     data() {
         return {

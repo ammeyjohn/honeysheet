@@ -14,7 +14,7 @@
         </div>
         <div id="demo3" class="row">
             <div class="col-md-6">
-                <user-detail></user-detail>
+                <user-profile :user="user"></user-profile>
             </div>
             <div class="col-md-6"></div>
         </div>
@@ -25,17 +25,27 @@
 
 import ContractSelect from 'views/contract/contract_select.vue'
 import InvoiceCondition from 'views/invoice/invoice_condition.vue'
-import UserDetail from 'components/user_detail.vue'
+import UserProfile from 'components/user_profile.vue'
 
 export default {
     components: {
         ContractSelect,
         InvoiceCondition,
-        UserDetail
+        UserProfile
     },
     data() {
         return {
-            result1: []
+            result1: [],
+            user: {
+                "Name": "袁杰",
+                "Account": "yuanjie",
+                "Title": "部门副经理",
+                "Department": "软件研发部",
+                "ManagerAccount": "CN=胡嘉宁,OU=公司员工,DC=shanghai3h,DC=com",
+                "Mobile": "13764417118",
+                "ExtensionNumber": "243",
+                "Email": "yuanjie@shanghai3h.com"
+            }
         }
     },
     methods: {
